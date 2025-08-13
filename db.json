@@ -1,0 +1,36 @@
+{
+  "commonPasswords": [
+    "password", "12345678", "qwerty123"
+  ],
+  "users": [
+    {
+      "id": 1,
+      "phone": "+375291234567",
+      "email": "user@example.com",
+      "birthDate": "1990-01-01",
+      "password": "$2a$10$N9qo8uLOickgx2ZMRZoMy.MrU1t33JkQ7Z7iC6B7J7vR7JY8X1zOe",
+      "fullName": "Иванов Иван Иванович",
+      "username": "ivanov_ii",
+      "agreement": true,
+      "createdAt": "2023-01-01T12:00:00Z"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "rating": 5,
+      "quote": "Quisque in lacus a urna fermentum euismod. Integer mi nibh, dapibus ac scelerisque eu, facilisis quis purus. Morbi blandit sit amet turpis nec",
+      "author": "Edward Newgate",
+      "position": "Founder Circle",
+      "photo": "../../img/edward.svg"
+    },
+    {
+      "id": 2,
+      "rating": 4,
+      "quote": "Another great testimonial text...",
+      "author": "John Smith",
+      "position": "Marketing Director",
+      "photo": "../../img/edward1.svg"
+    }
+  ]
+}

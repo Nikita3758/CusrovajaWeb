@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Регистрация</h1>
+        
+        <form id="register-form">
+
+            <div class="form-group">
+                <label for="phone">Телефон (РБ)*</label>
+                <input type="tel" id="phone" name="phone" placeholder="+375 XX XXX XX XX" required>
+                <div class="error-message" id="phone-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="birth-date">Дата рождения*</label>
+                <input type="date" id="birth-date" name="birthDate" required>
+                <div class="error-message" id="birth-date-error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label>Пароль*</label>
+                <div class="password-options">
+                    <label>
+                        <input type="radio" name="password-option" value="auto" checked> Сгенерировать автоматически
+                    </label>
+                    <label>
+                        <input type="radio" name="password-option" value="manual"> Ввести вручную
+                    </label>
+                </div>
+                
+                <div id="manual-password-fields" style="display: none;">
+                    <input type="password" id="password" name="password" placeholder="Введите пароль">
+                    <input type="password" id="confirm-password" placeholder="Повторите пароль">
+                    <div class="password-requirements">
+                        Пароль должен содержать:
+                        <ul>
+                            <li id="req-length">8-20 символов</li>
+                            <li id="req-upper">Заглавную букву</li>
+                            <li id="req-lower">Строчную букву</li>
+                            <li id="req-digit">Цифру</li>
+                            <li id="req-special">Спецсимвол</li>
+                            <li id="req-common">Не из TOP-100 паролей</li>
+                        </ul>
+                    </div>
+                    <div class="error-message" id="password-error"></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="full-name">ФИО*</label>
+                <input type="text" id="full-name" name="fullName" placeholder="Иванов Иван Иванович" required>
+                <div class="error-message" id="full-name-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Никнейм*</label>
+                <div class="username-generator">
+                    <input type="text" id="username" name="username" required readonly>
+                    <button type="button" id="generate-username">Сгенерировать</button>
+                    <span id="attempts-left">(попыток: 5)</span>
+                </div>
+                <div class="error-message" id="username-error"></div>
+            </div>
+
+            <div class="form-group agreement">
+                <label>
+                    <input type="checkbox" id="agreement" name="agreement" required>
+                    Я прочитал и согласен с <a href="#">Соглашением пользователя</a>*
+                </label>
+                <div class="error-message" id="agreement-error"></div>
+            </div>
+            
+            <button type="submit" id="register-btn" disabled>Зарегистрироваться</button>
+        </form>
+        
+        <p class="auth-link">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+    </div>
+    
+    <script src="../js/utils.js"></script>
+    <script src="../js/auth/register.js"></script>
+</body>
+</html>
