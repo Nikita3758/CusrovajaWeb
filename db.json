@@ -1,7 +1,4 @@
 {
-  "commonPasswords": [
-    "password", "12345678", "qwerty123"
-  ],
   "users": [
     {
       "id": 1,
@@ -19,7 +16,7 @@
     {
       "id": 1,
       "rating": 5,
-      "quote": "Quisque in lacus a urna fermentum euismod. Integer mi nibh, dapibus ac scelerisque eu, facilisis quis purus. Morbi blandit sit amet turpis nec",
+      "quote": "Quisque in lacus a urna fermentum euismod...",
       "author": "Edward Newgate",
       "position": "Founder Circle",
       "photo": "../../img/edward.svg"
