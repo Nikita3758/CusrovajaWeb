@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "phone": "+375291234567",
       "email": "user@example.com",
       "birthDate": "1990-01-01",
@@ -9,12 +9,61 @@
       "fullName": "Иванов Иван Иванович",
       "username": "ivanov_ii",
       "agreement": true,
+      "role": "user",
       "createdAt": "2023-01-01T12:00:00Z"
+    },
+    {
+      "id": "6cea",
+      "phone": "375296081350",
+      "email": "vladneckt@gmail.com",
+      "birthDate": "2000-06-15",
+      "password": "nMaZ%o4&rJA7",
+      "fullName": "ULADZISLAU SHABOLDA",
+      "username": "uladzislau_s",
+      "agreement": true,
+      "role": "user",
+      "createdAt": "2025-08-15T08:01:11.280Z"
+    },
+    {
+      "id": "c57d",
+      "phone": "375295001352",
+      "email": "qwerty@gmail.com",
+      "birthDate": "2001-02-15",
+      "password": "Mk1fq%4qZYaW",
+      "fullName": "Qewqwe Fewewe",
+      "username": "qewqwe_F12",
+      "agreement": true,
+      "role": "user",
+      "createdAt": "2025-08-15T09:07:09.840Z"
+    },
+    {
+      "id": "e109",
+      "phone": "375296081320",
+      "email": "grrgrrg@gmail.com",
+      "birthDate": "1999-06-15",
+      "password": "V1*jVf1(MTVw",
+      "fullName": "werewr rwerewrewrw",
+      "username": "werewr_r93",
+      "agreement": true,
+      "role": "user",
+      "createdAt": "2025-08-15T09:08:43.594Z"
+    },
+    {
+      "id": "f765",
+      "phone": "375294535353",
+      "email": "user@gmail.com",
+      "birthDate": "2000-02-15",
+      "password": "^7H2Mx4Tv(D5",
+      "fullName": "User User",
+      "username": "user_U75",
+      "agreement": true,
+      "role": "user",
+      "createdAt": "2025-08-15T09:16:15.771Z"
     }
   ],
   "testimonials": [
     {
-      "id": 1,
+      "id": "1",
       "rating": 5,
       "quote": "Quisque in lacus a urna fermentum euismod...",
       "author": "Edward Newgate",
@@ -22,7 +71,7 @@
       "photo": "../../img/edward.svg"
     },
     {
-      "id": 2,
+      "id": "2",
       "rating": 4,
       "quote": "Another great testimonial text...",
       "author": "John Smith",

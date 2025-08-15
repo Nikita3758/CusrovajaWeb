@@ -162,6 +162,10 @@ button:disabled {
     display: none;
 }
 
+.error {
+    border-color: #e74c3c !important;
+}
+
 .error-message.show {
     display: block;
 }
@@ -293,4 +297,14 @@ input[type="date"]::-webkit-clear-button {
 
 input[type="tel"] {
     letter-spacing: 1px;
+}
+
+.required:after {
+    content: " *";
+    color: #e74c3c;
+    margin-left: 4px;
+}
+
+label.required {
+    font-weight: 500;
 }

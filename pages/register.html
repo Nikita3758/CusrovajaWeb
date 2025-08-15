@@ -11,27 +11,30 @@
         <h1>Регистрация</h1>
         
         <form id="register-form">
-
             <div class="form-group">
-                <label for="phone">Телефон (РБ)*</label>
-                <input type="tel" id="phone" name="phone" placeholder="+375 XX XXX XX XX" required>
+                <label for="phone" class="required">Телефон (РБ)</label>
+                <input type="tel" id="phone" name="phone" 
+                    placeholder="+375 29 123 45 67" 
+                    pattern="\+375\s[0-9]{2}\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}"
+                    title="Формат: +375 29 123 45 67"
+                    required>
                 <div class="error-message" id="phone-error"></div>
             </div>
 
             <div class="form-group">
-                <label for="email">Email*</label>
+                <label for="email" class="required">Email</label>
                 <input type="email" id="email" name="email" required>
                 <div class="error-message" id="email-error"></div>
             </div>
 
             <div class="form-group">
-                <label for="birth-date">Дата рождения*</label>
+                <label for="birth-date" class="required">Дата рождения</label>
                 <input type="date" id="birth-date" name="birthDate" required>
                 <div class="error-message" id="birth-date-error"></div>
             </div>
             
             <div class="form-group">
-                <label>Пароль*</label>
+                <label class="required">Пароль</label>
                 <div class="password-options">
                     <label>
                         <input type="radio" name="password-option" value="auto" checked> Сгенерировать автоматически
@@ -52,7 +55,6 @@
                             <li id="req-lower">Строчную букву</li>
                             <li id="req-digit">Цифру</li>
                             <li id="req-special">Спецсимвол</li>
-                            <li id="req-common">Не из TOP-100 паролей</li>
                         </ul>
                     </div>
                     <div class="error-message" id="password-error"></div>
@@ -60,25 +62,25 @@
             </div>
             
             <div class="form-group">
-                <label for="full-name">ФИО*</label>
+                <label for="full-name" class="required">ФИО</label>
                 <input type="text" id="full-name" name="fullName" placeholder="Иванов Иван Иванович" required>
                 <div class="error-message" id="full-name-error"></div>
             </div>
 
             <div class="form-group">
-                <label for="username">Никнейм*</label>
+                <label for="username" class="required">Никнейм</label>
                 <div class="username-generator">
                     <input type="text" id="username" name="username" required readonly>
-                    <button type="button" id="generate-username">Сгенерировать</button>
+                    <button type="button" id="generate-username">Сгенерировать новый</button>
                     <span id="attempts-left">(попыток: 5)</span>
                 </div>
                 <div class="error-message" id="username-error"></div>
             </div>
 
             <div class="form-group agreement">
-                <label>
+                <label class="required">
                     <input type="checkbox" id="agreement" name="agreement" required>
-                    Я прочитал и согласен с <a href="#">Соглашением пользователя</a>*
+                    Я прочитал и согласен с <a href="#">Соглашением пользователя</a>
                 </label>
                 <div class="error-message" id="agreement-error"></div>
             </div>
@@ -89,7 +91,6 @@
         <p class="auth-link">Уже есть аккаунт? <a href="login.html">Войти</a></p>
     </div>
     
-    <script src="../js/utils.js"></script>
     <script src="../js/auth/register.js"></script>
 </body>
 </html>
