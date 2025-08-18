@@ -20,12 +20,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const disableImages = document.getElementById('disable-images');
     const resetSettings = document.getElementById('reset-settings');
 
+    const adminMessage = localStorage.getItem('adminRedirectMessage');
+    if (adminMessage) {
+        alert(adminMessage);
+        localStorage.removeItem('adminRedirectMessage');
+    }
+
     if (currentUser) {
         loginBtn.style.display = 'none';
         registerBtn.style.display = 'none';
         userMenu.style.display = 'block';
         usernameDisplay.textContent = currentUser.username || currentUser.fullName.split(' ')[0];
         dropdownUsername.textContent = currentUser.username || currentUser.fullName;
+
+        if (currentUser.role === 'admin') {
+            addAdminMenuLink();
+        }
+    }
+
+    function addAdminMenuLink() {
+        if (!document.querySelector('.admin-link')) {
+            const adminLink = document.createElement('a');
+            adminLink.href = 'admin-panel.html';
+            adminLink.className = 'admin-link';
+            adminLink.textContent = 'Admin Panel';
+            adminLink.setAttribute('data-i18n', 'adminPanel');
+            
+            const li = document.createElement('li');
+            li.appendChild(adminLink);
+
+            const nav = document.querySelector('nav ul');
+            const authButtons = document.querySelector('.auth-buttons').parentElement;
+            authButtons.parentElement.insertBefore(li, authButtons);
+
+            updateTranslations(languageSelect.value);
+        }
     }
 
     userBtn.addEventListener('click', function(e) {
@@ -92,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 disableImages.checked = settings.accessibility.disableImages;
             }
         }
+        
     }
 
     function saveSettings() {

@@ -133,86 +133,74 @@
 
 
 
+
 .section3 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 25px;
+  margin: 80px 0;
+  width: 100%
 }
 
-.text-section3{
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    width: 100%;
+.text-section3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-.text-section3 h2 {
-    font-size: 36px;
-    color: #000;
+.featured-destinations {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.btn-section3{
-    border: 0;
-    background-color: transparent;
-    color: #FB8F1D;
-    font-size: 17px;
-    cursor: pointer;
+.destination-card {
+  position: relative;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.btn-section3 img{
-    margin-left: 5px;
+.destination-card:hover {
+  transform: translateY(-5px);
 }
 
-.btn-section3:hover{
-    color: #fb901db7;
-}
-
-.destination{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.destination-banner {
-    background-image: url('../img/indonesia.svg');
-    background-size: cover;
-    background-position: center;
-    width: 330px;
-    height: 400px;
-    position: relative;
-    border-radius: 10px;
-    border-bottom-left-radius: 0;
-    overflow: hidden;
+.destination-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .destination-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 20;
-    background: #fff;
-    padding: 10px;
-    padding-left: 2px;
-    padding-bottom: 2px;
-    border-top-right-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
 }
 
 .destination-name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #042521;
-    text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .destination-location {
-    font-size: 12px;
-    opacity: 0.9;
-    color: #80918E;
-    text-align: left;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.destination-skeleton {
+  height: 300px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 
@@ -225,26 +213,24 @@
     flex-direction: column;
     width: 100%;
     gap: 25px;
-}
-
-.testimonials-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 25px;
-    max-width: 800px;
-    margin: 0 auto;
     padding: 40px 20px;
     text-align: center;
-    font-family: 'Arial', sans-serif;
 }
 
 .section-title {
   font-size: 32px;
-  margin-bottom: 40px;
   color: #333;
+}
+
+.btn-section3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #FF7D50;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .slider-container {
@@ -253,6 +239,11 @@
   position: relative;
   min-height: 300px;
   margin-bottom: 30px;
+  width: 100%;
+}
+
+.testimonials-slider{
+    width: 100%;
 }
 
 .testimonial-card {
@@ -270,21 +261,28 @@
   align-items: center;
   gap: 30px;
   text-align: left;
+  width: 100%;
 }
 
 .author-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 400px;
+  height: 500px;
+  border-radius: 5%;
   overflow: hidden;
   flex-shrink: 0;
-  border: 3px solid #FB8F1D;
 }
 
 .author-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.testimonial-title-view{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .testimonial-text-content {
@@ -298,6 +296,7 @@
 }
 
 .testimonial-text {
+  width: 50%;
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 20px;
@@ -363,6 +362,12 @@
   transform: scale(1.2);
 }
 
+@media (max-width: 1024px) {
+  .featured-destinations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -402,6 +407,12 @@
     .testimonial-card {
         padding: 20px;
     }
+}
+
+@media (max-width: 600px) {
+  .featured-destinations {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {

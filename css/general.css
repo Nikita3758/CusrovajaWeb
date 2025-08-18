@@ -149,6 +149,18 @@ nav ul li a:hover {
     display: inline-block;
 }
 
+.admin-link {
+    color: #FF7D50;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    display: block;
+}
+
+.admin-link:hover {
+    color: #e56a3d;
+    text-decoration: underline;
+}
+
 .user-btn {
     display: flex;
     align-items: center;
@@ -384,7 +396,6 @@ input:checked + .slider:before {
     color: #FB8F1D;
 }
 
-/* Цветовые схемы */
 body.color-scheme-dark-white {
     --bg-color: #000;
     --text-color: #fff;
@@ -439,7 +450,6 @@ body[class*="color-scheme-"] nav ul li a:hover {
     color: var(--text-color);
 }
 
-/* Размеры шрифтов */
 body.font-small {
     --font-small: 14px;
     --font-medium: 16px;
@@ -461,7 +471,6 @@ body.font-large {
     font-size: var(--font-large);
 }
 
-/* Режим доступности */
 body.accessibility-mode {
     --line-height: 1.8;
     --letter-spacing: 0.12em;

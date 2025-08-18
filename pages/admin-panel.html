@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Travel</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/admin-panel.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><img src="../img/logo.svg" alt="Логотип Travel"></div>
+            <div class="right-div-header">
+                <nav>
+                    <ul>
+                        <li><a href="home.html" data-i18n="home">Главная</a></li>
+                        <li><a href="destinations.html" data-i18n="destinations">Направления</a></li>
+                        <li><a href="#" data-i18n="about">О нас</a></li>
+                        <li><a href="#" data-i18n="partner">Партнеры</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="login.html" class="login" id="login-btn" data-i18n="login">Вход</a>
+                    <a href="register.html" class="register" id="register-btn" data-i18n="register">Регистрация</a>
+                    
+                    <div class="user-menu" id="user-menu" style="display: none;">
+                        <button class="user-btn" id="user-btn">
+                            <span id="username-display">Пользователь</span>
+                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <div class="dropdown-header">
+                                <span id="dropdown-username">Имя пользователя</span>
+                            </div>
+                            <button class="dropdown-item" id="settings-btn" data-i18n="settings">Настройки</button>
+                            <button class="dropdown-item logout-btn" id="logout-btn" data-i18n="logout">Выход</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="admin-panel">
+            <h1>Admin Panel</h1>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="destinations">Destinations</button>
+                <button class="tab-btn" data-tab="testimonials">Testimonials</button>
+                <button class="tab-btn" data-tab="users">Users</button>
+            </div>
+
+            <div class="tab-content active" id="destinations-tab">
+                <div class="admin-controls">
+                    <button class="btn" id="addDestinationBtn">Add Destination</button>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="destinationsTable"></tbody>
+                </table>
+            </div>
+
+            <div class="tab-content" id="testimonials-tab">
+                <div class="admin-controls">
+                    <button class="btn" id="addTestimonialBtn">Add Testimonial</button>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Photo</th>
+                            <th>Author</th>
+                            <th>Position</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testimonialsTable"></tbody>
+                </table>
+            </div>
+
+            <div class="tab-content" id="users-tab">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable"></tbody>
+                </table>
+            </div>
+        </main>
+
+        <div class="modal" id="adminModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modalTitle">Add New Destination</h2>
+                
+                <form id="adminForm">
+                    <input type="hidden" id="editId">
+                    <input type="hidden" id="currentTab" value="destinations">
+
+                    <div class="form-group destination-fields">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            <select id="category" required>
+                                <option value="beach">Beach</option>
+                                <option value="mountain">Mountain</option>
+                                <option value="city">City</option>
+                                <option value="island">Island</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="image">Image URL:</label>
+                            <input type="text" id="image" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea id="description" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group testimonial-fields" style="display: none;">
+                        <div class="form-group">
+                            <label for="author">Author:</label>
+                            <input type="text" id="author" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="position">Position:</label>
+                            <input type="text" id="position" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quote">Quote:</label>
+                            <textarea id="quote" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rating">Rating (1-5):</label>
+                            <input type="number" id="rating" min="1" max="5" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="photo">Photo URL:</label>
+                            <input type="text" id="photo">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin/admin-panel.js"></script>
+    <script src="../js/i18n/i18n.js"></script>
+    <script src="../js/menu-user/menu.js"></script>
+</body>
+</html>

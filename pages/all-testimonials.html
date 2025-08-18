@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore and Travel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>All Testimonials | Travel</title>
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/buttons.css">
+    <link rel="stylesheet" href="../css/testimonials.css">
 </head>
 <body>
     <div class="container">
-
         <header>
         <div class="logo"><img src="../img/logo.svg" alt="Логотип Travel"></div>
         <div class="right-div-header">
@@ -114,125 +109,50 @@
         </div>
     </div>
 
-        <main>
-            <div class="section1">
-                <div class="text-section1">
-                    <h1>Explore and Travel</h1>
-                    <h2>Holiday finder</h2>
-                    
-                    <div class="finder-container">
-                        <div class="finder-container1">
-                            <div class="finder-group">
-                                <select class="finder-select">
-                                    <option value="" disabled selected>Location</option>
-                                    <option value="usa">USA</option>
-                                    <option value="europe">Europe</option>
-                                    <option value="asia">Asia</option>
-                                </select>
-                            </div>
-                            <div class="finder-group">
-                                <select class="finder-select">
-                                    <option value="" disabled selected>Activity</option>
-                                    <option value="hiking">Hiking</option>
-                                    <option value="skiing">Skiing</option>
-                                    <option value="cycling">Cycling</option>
-                                </select>
-                            </div>                            
-                        </div>
-                        <div class="finder-container2">
-                            <div class="finder-group">
-                                <select class="finder-select">
-                                    <option value="" disabled selected>Grade</option>
-                                    <option value="easy">Easy</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="hard">Hard</option>
-                                </select>
-                            </div>
-                            <div class="finder-group">
-                                <select class="finder-select">
-                                    <option value="" disabled selected>Date</option>
-                                    <option value="summer">Summer 2023</option>
-                                    <option value="winter">Winter 2023</option>
-                                    <option value="spring">Spring 2024</option>
-                                </select>
-                            </div>                            
-                        </div>
-                    </div>
-
-                    <button class="btn">Explore</button>
-                </div>
-                <div class="img-section1">
-                    <img src="../img/home-section1.svg" alt="img-section1">
-                </div>
-            </div>
-
-            <div class="section2">
-                <div class="img-section2">
-                    <img src="../img/home-section2.svg" alt="img-section2">
-                </div>
-
-                <div class="text-section2">
-                    <h2>A new way to explore the world</h2>
-
-                    <p>For decades travellers have reached for Lonely Planet books when looking to plan and execute their perfect trip, but now, they can also let Lonely Planet Experiences lead the way</p>
-
-                    <button class="btn">Learn more</button>
-                </div>
-            </div>
-
-            <div class="section3">
-            <div class="text-section3">
-                <h2>Featured destinations</h2>
-                <a href="destinations.html" class="btn-section3">View all <img src="../img/arrow-right.svg" alt="arrow-right"></a>
-            </div>
-
-            <div class="featured-destinations" id="featuredDestinations">
-                <div class="destination-skeleton"></div>
-                <div class="destination-skeleton"></div>
-                <div class="destination-skeleton"></div>
-                <div class="destination-skeleton"></div>
-            </div>
-            </div>
-
-            <div class="section4">
-                <div class="text-section4">
-                    <h2>Guides by Thousand Sunny</h2>
-
-                    <p>Packed with tips and advice from our on-the-ground experts, our city guides app (iOS and Android) is the ultimate resource before and during a trip.</p>
-
-                    <button class="btn">Download</button>
-                </div>
-
-                <div class="img-section4">
-                    <img src="../img/home-section4.svg" alt="img-section2">
-                </div>
-            </div>
-
-            <div class="section5">
-                <div class="testimonial-title-view">
-                <h2 class="section-title">Testimonials</h2>
-                <a href="all-testimonials.html" class="btn-section3">View all <img src="../img/arrow-right.svg" alt="arrow-right"></a>
+        <main class="testimonials-page">
+            <h1 class="page-title">All Testimonials</h1>
+            
+            <div class="controls-panel">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search testimonials...">
+                    <button id="searchBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
                 </div>
                 
-                <div class="testimonials-slider">
-                    <div class="slider-container" id="slider-container"></div>
+                <div class="filters">
+                    <select id="ratingFilter">
+                        <option value="0">All Ratings</option>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                    </select>
                     
-                    <div class="slider-controls">
-                        <button class="slider-arrow prev-arrow">←</button>
-                        <div class="slider-pagination" id="slider-pagination"></div>
-                        <button class="slider-arrow next-arrow">→</button>
-                    </div>
+                    <select id="sortBy">
+                        <option value="rating-desc">Highest Rating</option>
+                        <option value="rating-asc">Lowest Rating</option>
+                        <option value="author-asc">Author (A-Z)</option>
+                        <option value="author-desc">Author (Z-A)</option>
+                    </select>
                 </div>
+            </div>
+            
+            <div class="testimonials-grid" id="testimonialsGrid">
+            </div>
+            
+            <div class="pagination" id="pagination">
             </div>
         </main>
 
         <footer>
-
         </footer>
     </div>
-    <script src="../js/slider-home/slider.js"></script>
+
+    <script src="../js/testimonials/all-testimonials.js"></script>
     <script src="../js/i18n/i18n.js"></script>
     <script src="../js/menu-user/menu.js"></script>
-    <script src="../js/destinations/destinations.js"></script>
 </body>
 </html>

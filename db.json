@@ -1,18 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "phone": "+375291234567",
-      "email": "user@example.com",
-      "birthDate": "1990-01-01",
-      "password": "$2a$10$N9qo8uLOickgx2ZMRZoMy.MrU1t33JkQ7Z7iC6B7J7vR7JY8X1zOe",
-      "fullName": "Иванов Иван Иванович",
-      "username": "ivanov_ii",
-      "agreement": true,
-      "role": "user",
-      "createdAt": "2023-01-01T12:00:00Z"
-    },
-    {
       "id": "6cea",
       "phone": "375296081350",
       "email": "vladneckt@gmail.com",
@@ -21,20 +9,8 @@
       "fullName": "ULADZISLAU SHABOLDA",
       "username": "uladzislau_s",
       "agreement": true,
-      "role": "user",
+      "role": "admin",
       "createdAt": "2025-08-15T08:01:11.280Z"
-    },
-    {
-      "id": "c57d",
-      "phone": "375295001352",
-      "email": "qwerty@gmail.com",
-      "birthDate": "2001-02-15",
-      "password": "Mk1fq%4qZYaW",
-      "fullName": "Qewqwe Fewewe",
-      "username": "qewqwe_F12",
-      "agreement": true,
-      "role": "user",
-      "createdAt": "2025-08-15T09:07:09.840Z"
     },
     {
       "id": "e109",
@@ -59,24 +35,142 @@
       "agreement": true,
       "role": "user",
       "createdAt": "2025-08-15T09:16:15.771Z"
+    },
+    {
+      "id": "3890",
+      "phone": "375294533745",
+      "email": "admin@gmail.com",
+      "birthDate": "2000-02-18",
+      "password": "Syiwe1s*pI&f",
+      "fullName": "Admin Dmin Min",
+      "username": "admin",
+      "agreement": true,
+      "role": "admin",
+      "createdAt": "2025-08-18T15:00:21.245Z"
     }
   ],
   "testimonials": [
     {
       "id": "1",
-      "rating": 5,
-      "quote": "Quisque in lacus a urna fermentum euismod...",
       "author": "Edward Newgate",
       "position": "Founder Circle",
-      "photo": "../../img/edward.svg"
+      "quote": "Quisque in lacus a urna fermentum euismod. Integer mi nibh, dapibus ac scelerisque eu, facilisis quis purus. Morbi blandit sit amet turpis nec",
+      "rating": 5,
+      "photo": "./../img/edward.svg"
     },
     {
       "id": "2",
-      "rating": 4,
-      "quote": "Another great testimonial text...",
-      "author": "John Smith",
+      "author": "Sarah Johnson",
       "position": "Marketing Director",
-      "photo": "../../img/edward1.svg"
+      "quote": "Our trip was amazing thanks to this service. Everything was perfectly organized and we had the best experience ever!",
+      "rating": 4,
+      "photo": "./../img/edward.svg"
+    },
+    {
+      "id": "6de6",
+      "author": "ауцауца",
+      "position": "уцацуауцауцауц",
+      "quote": "ауцауцауцауцауцау",
+      "rating": 3,
+      "photo": "ацуауцауцауцац"
+    }
+  ],
+  "destinations": [
+    {
+      "id": "1",
+      "name": "Raja Ampat",
+      "location": "Indonesia",
+      "image": "./../img/indonesia.svg",
+      "category": "beach",
+      "description": "Raja Ampat is an archipelago comprising over 1,500 small islands, cays, and shoals surrounding the four main islands of Misool, Salawati, Batanta, and Waigeo."
+    },
+    {
+      "id": "2",
+      "name": "Bali",
+      "location": "Indonesia",
+      "image": "./../img/indonesia.svg",
+      "category": "beach",
+      "description": "Bali is a province of Indonesia and the westernmost of the Lesser Sunda Islands. Known for its forested volcanic mountains, iconic rice paddies, beaches and coral reefs."
+    },
+    {
+      "id": "3",
+      "name": "Santorini",
+      "location": "Greece",
+      "image": "./../img/indonesia.svg",
+      "category": "island",
+      "description": "Santorini is one of the Cyclades islands in the Aegean Sea. It was devastated by a volcanic eruption in the 16th century BC, forever shaping its rugged landscape."
+    },
+    {
+      "id": "4",
+      "name": "Kyoto",
+      "location": "Japan",
+      "image": "./../img/indonesia.svg",
+      "category": "city",
+      "description": "Kyoto, once the capital of Japan, is a city on the island of Honshu. It's famous for its numerous classical Buddhist temples, as well as gardens, imperial palaces and traditional wooden houses."
+    },
+    {
+      "id": "5",
+      "name": "Swiss Alps",
+      "location": "Switzerland",
+      "image": "./../img/indonesia.svg",
+      "category": "mountain",
+      "description": "The Swiss Alps comprise almost all the highest mountains of the Alps, such as Dufourspitze, the Dom, the Liskamm, the Weisshorn and the Matterhorn."
+    },
+    {
+      "id": "6",
+      "name": "Patagonia",
+      "location": "Argentina",
+      "image": "./../img/indonesia.svg",
+      "category": "mountain",
+      "description": "Patagonia is a sparsely populated region at the southern end of South America, shared by Argentina and Chile. The region comprises the southern section of the Andes mountains as well as deserts, steppes and grasslands."
+    },
+    {
+      "id": "7",
+      "name": "Bora Bora",
+      "location": "French Polynesia",
+      "image": "./../img/indonesia.svg",
+      "category": "beach",
+      "description": "Bora Bora is a small South Pacific island northwest of Tahiti in French Polynesia. Surrounded by sand-fringed motus (islets) and a turquoise lagoon protected by a coral reef, it's known for its scuba diving."
+    },
+    {
+      "id": "8",
+      "name": "New York",
+      "location": "USA",
+      "image": "./../img/indonesia.svg",
+      "category": "city",
+      "description": "New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that's among the world's major commercial, financial and cultural centers."
+    },
+    {
+      "id": "9",
+      "name": "Great Barrier Reef",
+      "location": "Australia",
+      "image": "./../img/indonesia.svg",
+      "category": "beach",
+      "description": "The Great Barrier Reef is the world's largest coral reef system composed of over 2,900 individual reefs and 900 islands stretching for over 2,300 kilometres over an area of approximately 344,400 square kilometres."
+    },
+    {
+      "id": "10",
+      "name": "Machu Picchu",
+      "location": "Peru",
+      "image": "./../img/indonesia.svg",
+      "category": "mountain",
+      "description": "Machu Picchu is a 15th-century Inca citadel situated on a mountain ridge 2,430 metres above sea level. It is located in the Cusco Region, Urubamba Province, Machupicchu District in Peru."
+    },
+    {
+      "id": "11",
+      "name": "Paris",
+      "location": "France",
+      "image": "./../img/indonesia.svg",
+      "category": "city",
+      "description": "Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine."
+    },
+    {
+      "name": "уауцау",
+      "location": "цауцауцауцауауауа",
+      "category": "beach",
+      "image": "цуауцауц",
+      "description": "ауцацуауц",
+      "id": "158a"
     }
   ]
 }

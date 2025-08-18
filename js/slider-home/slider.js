@@ -41,15 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
       slide.className = 'testimonial-card';
       slide.innerHTML = `
         <div class="testimonial-content">
-          <div class="author-photo">
-            <img src="${testimonial.photo}" alt="${testimonial.author}" 
-                 onerror="this.src='../img/default-avatar.svg'">
-          </div>
           <div class="testimonial-text-content">
             <div class="rating">${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</div>
             <p class="testimonial-text">"${testimonial.quote}"</p>
             <h4 class="testimonial-author">${testimonial.author}</h4>
             <p class="testimonial-position">${testimonial.position}</p>
+          </div>
+          <div class="author-photo">
+            <img src="${testimonial.photo}" alt="${testimonial.author}" 
+                 onerror="this.src='../img/default-avatar.svg'">
           </div>
         </div>
       `;

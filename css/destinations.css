@@ -1,0 +1,182 @@
+.destinations-page {
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.controls-panel {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    min-width: 250px;
+}
+
+.search-box input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.search-box button {
+    padding: 10px 15px;
+    background: #FF7D50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-box button:hover {
+    background: #e56a3d;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filters select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.destination-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.destination-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.destination-info {
+    padding: 20px;
+}
+
+.destination-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.destination-location {
+    color: #666;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.destination-category {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.destination-description {
+    margin-top: 10px;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination button:hover {
+    background: #f0f0f0;
+}
+
+.pagination button.active {
+    background: #FF7D50;
+    color: white;
+    border-color: #FF7D50;
+}
+
+.pagination button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .controls-panel {
+        flex-direction: column;
+    }
+    
+    .filters {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .filters select {
+        width: 100%;
+    }
+    
+    .destinations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .destinations-grid {
+        grid-template-columns: 1fr;
+    }
+}
