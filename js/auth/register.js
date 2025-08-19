@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const parts = fullName.trim().split(/\s+/).filter(p => p !== '');
-        const randomSuffix = Math.floor(Math.random() * 90 + 10); // от 10 до 99
+        const randomSuffix = Math.floor(Math.random() * 90 + 10); 
 
         if (parts.length >= 3) {
             return `${parts[0].toLowerCase()}_${parts[1][0]}${parts[2][0]}${randomSuffix}`.substring(0, 20);

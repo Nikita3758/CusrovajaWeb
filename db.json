@@ -65,14 +65,6 @@
       "quote": "Our trip was amazing thanks to this service. Everything was perfectly organized and we had the best experience ever!",
       "rating": 4,
       "photo": "./../img/edward.svg"
-    },
-    {
-      "id": "6de6",
-      "author": "ауцауца",
-      "position": "уцацуауцауцауц",
-      "quote": "ауцауцауцауцауцау",
-      "rating": 3,
-      "photo": "ацуауцауцауцац"
     }
   ],
   "destinations": [
@@ -163,14 +155,42 @@
       "image": "./../img/indonesia.svg",
       "category": "city",
       "description": "Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine."
+    }
+  ],
+  "articles": [
+    {
+      "id": "1",
+      "title": "The many benefits of taking a healing holiday",
+      "excerpt": "Helsing holidays are on the rise to help maximise your health and happiness...",
+      "content": "<p>Helsing holidays are on the rise to help maximise your health and happiness...Helsing holidays are on the rise to help maximise your health and happiness...Helsing holidays are on the rise to help maximise your health and happiness...Helsing holidays are on the rise to help maximise your health and happiness...Helsing holidays are on the rise to help maximise your health and happiness...Helsing holidays are on the rise to help maximise your health and happiness...Helsing holidays are on the rise to help maximise your health and happiness...Helsing holidays are on the rise to help maximise your health and happiness...</p>",
+      "image": "./../img/article.svg",
+      "category": "wellness",
+      "date": "2025-08-10"
     },
     {
-      "name": "уауцау",
-      "location": "цауцауцауцауауауа",
-      "category": "beach",
-      "image": "цуауцауц",
-      "description": "ауцацуауц",
-      "id": "158a"
+      "id": "2", 
+      "title": "The best Kyoto restaurant to try Japanese food",
+      "excerpt": "From tofu to teahouses, here's our guide to Kyoto's best restaurants to visit...",
+      "content": "<p>Kyoto food content...</p>",
+      "image": "./../img/article.svg",
+      "category": "food",
+      "date": "2025-08-05"
+    },
+    {
+      "id": "3",
+      "title": "Skip Chichen Itza and head to this remote Yucatan",
+      "excerpt": "It's remote and challenging to get, but braving the jungle and exploring these ruins without the...",
+      "image": "./../img/article.svg",
+      "category": "adventure",
+      "date": "2025-07-28"
+    },
+    {
+      "id": "4",
+      "title": "Surf's up at these beginner spots around the world",
+      "excerpt": "If learning to surf has in on your to-do list for a while, the good news is: it's never too late...",
+      "image": "./../img/article.svg",
+      "category": "sports",
+      "date": "2025-07-20"
     }
   ]
 }

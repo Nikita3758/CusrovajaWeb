@@ -2,29 +2,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     
     if (!currentUser || currentUser.role !== 'admin') {
-        localStorage.setItem('adminRedirectMessage', 'У вас нет прав доступа к этой странице');
+        localStorage.setItem('adminRedirectMessage', 'You do not have permission to access this page');
         window.location.href = 'index.html';
         return;
     }
 
     const destinationsTable = document.getElementById('destinationsTable');
     const testimonialsTable = document.getElementById('testimonialsTable');
+    const articlesTable = document.getElementById('articlesTable');
     const usersTable = document.getElementById('usersTable');
     const adminModal = document.getElementById('adminModal');
     const adminForm = document.getElementById('adminForm');
     const modalTitle = document.getElementById('modalTitle');
     const addDestinationBtn = document.getElementById('addDestinationBtn');
     const addTestimonialBtn = document.getElementById('addTestimonialBtn');
+    const addArticleBtn = document.getElementById('addArticleBtn');
     const closeModal = document.querySelector('.close-modal');
     const tabContents = document.querySelectorAll('.tab-content');
     const tabBtns = document.querySelectorAll('.tab-btn');
 
     const destinationFields = document.querySelector('.destination-fields');
     const testimonialFields = document.querySelector('.testimonial-fields');
+    const articleFields = document.querySelector('.article-fields');
 
     let currentTab = 'destinations';
     let destinations = [];
     let testimonials = [];
+    let articles = [];
     let users = [];
     let isEditing = false;
 
@@ -35,23 +39,26 @@ document.addEventListener('DOMContentLoaded', function() {
         Promise.all([
             fetch('http://localhost:3000/destinations').then(res => res.json()),
             fetch('http://localhost:3000/testimonials').then(res => res.json()),
+            fetch('http://localhost:3000/articles').then(res => res.json()),
             fetch('http://localhost:3000/users').then(res => res.json())
         ])
-        .then(([destData, testData, userData]) => {
+        .then(([destData, testData, articleData, userData]) => {
             destinations = destData;
             testimonials = testData;
+            articles = articleData;
             users = userData;
             renderAllTables();
         })
         .catch(error => {
-            console.error('Ошибка загрузки данных:', error);
-            alert('Ошибка загрузки данных. Подробности в консоли.');
+            console.error('Error loading data:', error);
+            alert('Error loading data. Please check console for details.');
         });
     }
 
     function renderAllTables() {
         renderDestinationsTable();
         renderTestimonialsTable();
+        renderArticlesTable();
         renderUsersTable();
     }
 
@@ -59,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         destinationsTable.innerHTML = '';
         
         if (destinations.length === 0) {
-            destinationsTable.innerHTML = '<tr><td colspan="6">Направления не найдены</td></tr>';
+            destinationsTable.innerHTML = '<tr><td colspan="6">No destinations found</td></tr>';
             return;
         }
         
@@ -72,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${destination.location}</td>
                 <td>${destination.category}</td>
                 <td>
-                    <button class="action-btn edit-btn" data-id="${destination.id}">Редактировать</button>
-                    <button class="action-btn delete-btn" data-id="${destination.id}">Удалить</button>
+                    <button class="action-btn edit-btn" data-id="${destination.id}">Edit</button>
+                    <button class="action-btn delete-btn" data-id="${destination.id}">Delete</button>
                 </td>
             `;
             destinationsTable.appendChild(row);
@@ -86,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         testimonialsTable.innerHTML = '';
         
         if (testimonials.length === 0) {
-            testimonialsTable.innerHTML = '<tr><td colspan="6">Отзывы не найдены</td></tr>';
+            testimonialsTable.innerHTML = '<tr><td colspan="6">No testimonials found</td></tr>';
             return;
         }
         
@@ -97,10 +104,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td><img src="${testimonial.photo}" alt="${testimonial.author}" class="admin-thumbnail" onerror="this.src='../img/default-avatar.svg'"></td>
                 <td>${testimonial.author}</td>
                 <td>${testimonial.position}</td>
-                <td>${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</td>
+                <td class="rating-stars">${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</td>
                 <td>
-                    <button class="action-btn edit-btn" data-id="${testimonial.id}">Редактировать</button>
-                    <button class="action-btn delete-btn" data-id="${testimonial.id}">Удалить</button>
+                    <button class="action-btn edit-btn" data-id="${testimonial.id}">Edit</button>
+                    <button class="action-btn delete-btn" data-id="${testimonial.id}">Delete</button>
                 </td>
             `;
             testimonialsTable.appendChild(row);
@@ -109,11 +116,38 @@ document.addEventListener('DOMContentLoaded', function() {
         addTableEventListeners('#testimonialsTable');
     }
 
+    function renderArticlesTable() {
+        articlesTable.innerHTML = '';
+        
+        if (articles.length === 0) {
+            articlesTable.innerHTML = '<tr><td colspan="6">No articles found</td></tr>';
+            return;
+        }
+        
+        articles.forEach(article => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${article.id}</td>
+                <td><img src="${article.image}" alt="${article.title}" class="admin-thumbnail" onerror="this.src='../img/default-image.svg'"></td>
+                <td>${article.title}</td>
+                <td>${article.category}</td>
+                <td>${new Date(article.date).toLocaleDateString()}</td>
+                <td>
+                    <button class="action-btn edit-btn" data-id="${article.id}">Edit</button>
+                    <button class="action-btn delete-btn" data-id="${article.id}">Delete</button>
+                </td>
+            `;
+            articlesTable.appendChild(row);
+        });
+
+        addTableEventListeners('#articlesTable');
+    }
+
     function renderUsersTable() {
         usersTable.innerHTML = '';
         
         if (users.length === 0) {
-            usersTable.innerHTML = '<tr><td colspan="5">Пользователи не найдены</td></tr>';
+            usersTable.innerHTML = '<tr><td colspan="5">No users found</td></tr>';
             return;
         }
         
@@ -126,9 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${user.role || 'user'}</td>
                 <td>
                     ${user.role !== 'admin' ? `
-                        <button class="action-btn edit-btn" data-id="${user.id}">Изменить роль</button>
-                        <button class="action-btn delete-btn" data-id="${user.id}">Удалить</button>
-                    ` : 'Админ'}
+                        <button class="action-btn edit-btn" data-id="${user.id}">Edit Role</button>
+                        <button class="action-btn delete-btn" data-id="${user.id}">Delete</button>
+                    ` : 'Admin'}
                 </td>
             `;
             usersTable.appendChild(row);
@@ -143,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const id = e.target.dataset.id;
                 if (tableSelector === '#destinationsTable') handleEditDestination(id);
                 else if (tableSelector === '#testimonialsTable') handleEditTestimonial(id);
+                else if (tableSelector === '#articlesTable') handleEditArticle(id);
                 else if (tableSelector === '#usersTable') handleEditUser(id);
             });
         });
@@ -152,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const id = e.target.dataset.id;
                 if (tableSelector === '#destinationsTable') handleDeleteDestination(id);
                 else if (tableSelector === '#testimonialsTable') handleDeleteTestimonial(id);
+                else if (tableSelector === '#articlesTable') handleDeleteArticle(id);
                 else if (tableSelector === '#usersTable') handleDeleteUser(id);
             });
         });
@@ -175,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addDestinationBtn.addEventListener('click', () => {
             isEditing = false;
             adminForm.reset();
-            modalTitle.textContent = 'Добавить новое направление';
+            modalTitle.textContent = 'Add New Destination';
             document.getElementById('currentTab').value = 'destinations';
             updateFormFieldsVisibility();
             adminModal.style.display = 'block';
@@ -184,8 +220,18 @@ document.addEventListener('DOMContentLoaded', function() {
         addTestimonialBtn.addEventListener('click', () => {
             isEditing = false;
             adminForm.reset();
-            modalTitle.textContent = 'Добавить новый отзыв';
+            modalTitle.textContent = 'Add New Testimonial';
             document.getElementById('currentTab').value = 'testimonials';
+            updateFormFieldsVisibility();
+            adminModal.style.display = 'block';
+        });
+
+        addArticleBtn.addEventListener('click', () => {
+            isEditing = false;
+            adminForm.reset();
+            modalTitle.textContent = 'Add New Article';
+            document.getElementById('currentTab').value = 'articles';
+            document.getElementById('articleDate').value = new Date().toISOString().split('T')[0];
             updateFormFieldsVisibility();
             adminModal.style.display = 'block';
         });
@@ -206,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateFormFieldsVisibility() {
         destinationFields.style.display = 'none';
         testimonialFields.style.display = 'none';
+        articleFields.style.display = 'none';
 
         document.querySelectorAll('#adminForm [required]').forEach(field => {
             field.required = false;
@@ -221,6 +268,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.testimonial-fields [required]').forEach(field => {
                 field.required = true;
             });
+        } else if (currentTab === 'articles') {
+            articleFields.style.display = 'block';
+            document.querySelectorAll('.article-fields [required]').forEach(field => {
+                field.required = true;
+            });
         }
     }
 
@@ -229,10 +281,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (destination) {
             isEditing = true;
-            modalTitle.textContent = 'Редактировать направление';
+            modalTitle.textContent = 'Edit Destination';
             document.getElementById('currentTab').value = 'destinations';
             updateFormFieldsVisibility();
-
+            
             document.getElementById('editId').value = destination.id;
             document.getElementById('name').value = destination.name;
             document.getElementById('location').value = destination.location;
@@ -242,12 +294,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             adminModal.style.display = 'block';
         } else {
-            alert('Направление не найдено!');
+            alert('Destination not found!');
         }
     }
 
     function handleDeleteDestination(id) {
-        if (confirm('Вы уверены, что хотите удалить это направление?')) {
+        if (confirm('Are you sure you want to delete this destination?')) {
             fetch(`http://localhost:3000/destinations/${id}`, {
                 method: 'DELETE'
             })
@@ -255,14 +307,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     destinations = destinations.filter(d => d.id != id);
                     renderDestinationsTable();
-                    alert('Направление успешно удалено!');
+                    alert('Destination deleted successfully!');
                 } else {
-                    throw new Error('Не удалось удалить направление');
+                    throw new Error('Failed to delete destination');
                 }
             })
             .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Ошибка удаления направления: ' + error.message);
+                console.error('Error:', error);
+                alert('Error deleting destination: ' + error.message);
             });
         }
     }
@@ -272,9 +324,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (testimonial) {
             isEditing = true;
-            modalTitle.textContent = 'Редактировать отзыв';
+            modalTitle.textContent = 'Edit Testimonial';
             document.getElementById('currentTab').value = 'testimonials';
-
+            updateFormFieldsVisibility();
+            
             document.getElementById('editId').value = testimonial.id;
             document.getElementById('author').value = testimonial.author;
             document.getElementById('position').value = testimonial.position;
@@ -284,12 +337,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             adminModal.style.display = 'block';
         } else {
-            alert('Отзыв не найден!');
+            alert('Testimonial not found!');
         }
     }
 
     function handleDeleteTestimonial(id) {
-        if (confirm('Вы уверены, что хотите удалить этот отзыв?')) {
+        if (confirm('Are you sure you want to delete this testimonial?')) {
             fetch(`http://localhost:3000/testimonials/${id}`, {
                 method: 'DELETE'
             })
@@ -297,14 +350,58 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     testimonials = testimonials.filter(t => t.id != id);
                     renderTestimonialsTable();
-                    alert('Отзыв успешно удален!');
+                    alert('Testimonial deleted successfully!');
                 } else {
-                    throw new Error('Не удалось удалить отзыв');
+                    throw new Error('Failed to delete testimonial');
                 }
             })
             .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Ошибка удаления отзыва: ' + error.message);
+                console.error('Error:', error);
+                alert('Error deleting testimonial: ' + error.message);
+            });
+        }
+    }
+
+    function handleEditArticle(id) {
+        const article = articles.find(a => a.id == id);
+        
+        if (article) {
+            isEditing = true;
+            modalTitle.textContent = 'Edit Article';
+            document.getElementById('currentTab').value = 'articles';
+            updateFormFieldsVisibility();
+            
+            document.getElementById('editId').value = article.id;
+            document.getElementById('articleTitle').value = article.title;
+            document.getElementById('articleExcerpt').value = article.excerpt;
+            document.getElementById('articleContent').value = article.content;
+            document.getElementById('articleCategory').value = article.category;
+            document.getElementById('articleImage').value = article.image;
+            document.getElementById('articleDate').value = article.date;
+            
+            adminModal.style.display = 'block';
+        } else {
+            alert('Article not found!');
+        }
+    }
+
+    function handleDeleteArticle(id) {
+        if (confirm('Are you sure you want to delete this article?')) {
+            fetch(`http://localhost:3000/articles/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    articles = articles.filter(a => a.id != id);
+                    renderArticlesTable();
+                    alert('Article deleted successfully!');
+                } else {
+                    throw new Error('Failed to delete article');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error deleting article: ' + error.message);
             });
         }
     }
@@ -313,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const user = users.find(u => u.id == id);
         
         if (user) {
-            const newRole = prompt('Введите новую роль (admin/user):', user.role || 'user');
+            const newRole = prompt('Enter new role (admin/user):', user.role || 'user');
             
             if (newRole && (newRole === 'admin' || newRole === 'user')) {
                 fetch(`http://localhost:3000/users/${id}`, {
@@ -327,14 +424,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (response.ok) {
                         user.role = newRole;
                         renderUsersTable();
-                        alert('Роль пользователя успешно обновлена!');
+                        alert('User role updated successfully!');
                     } else {
-                        throw new Error('Не удалось обновить роль пользователя');
+                        throw new Error('Failed to update user role');
                     }
                 })
                 .catch(error => {
-                    console.error('Ошибка:', error);
-                    alert('Ошибка обновления роли пользователя: ' + error.message);
+                    console.error('Error:', error);
+                    alert('Error updating user role: ' + error.message);
                 });
             }
         }
@@ -344,16 +441,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const user = users.find(u => u.id == id);
         
         if (!user) {
-            alert('Пользователь не найден!');
+            alert('User not found!');
             return;
         }
         
         if (user.role === 'admin') {
-            alert('Нельзя удалить администратора!');
+            alert('Cannot delete admin user!');
             return;
         }
         
-        if (confirm('Вы уверены, что хотите удалить этого пользователя?')) {
+        if (confirm('Are you sure you want to delete this user?')) {
             fetch(`http://localhost:3000/users/${id}`, {
                 method: 'DELETE'
             })
@@ -361,14 +458,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     users = users.filter(u => u.id != id);
                     renderUsersTable();
-                    alert('Пользователь успешно удален!');
+                    alert('User deleted successfully!');
                 } else {
-                    throw new Error('Не удалось удалить пользователя');
+                    throw new Error('Failed to delete user');
                 }
             })
             .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Ошибка удаления пользователя: ' + error.message);
+                console.error('Error:', error);
+                alert('Error deleting user: ' + error.message);
             });
         }
     }
@@ -391,15 +488,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const image = document.getElementById('image');
             
             if (!name.value.trim()) {
-                name.setCustomValidity('Название обязательно');
+                name.setCustomValidity('Name is required');
                 isValid = false;
             }
             if (!location.value.trim()) {
-                location.setCustomValidity('Местоположение обязательно');
+                location.setCustomValidity('Location is required');
                 isValid = false;
             }
             if (!image.value.trim()) {
-                image.setCustomValidity('URL изображения обязателен');
+                image.setCustomValidity('Image URL is required');
                 isValid = false;
             }
             
@@ -422,19 +519,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const rating = document.getElementById('rating');
             
             if (!author.value.trim()) {
-                author.setCustomValidity('Автор обязателен');
+                author.setCustomValidity('Author is required');
                 isValid = false;
             }
             if (!position.value.trim()) {
-                position.setCustomValidity('Должность обязательна');
+                position.setCustomValidity('Position is required');
                 isValid = false;
             }
             if (!quote.value.trim()) {
-                quote.setCustomValidity('Текст отзыва обязателен');
+                quote.setCustomValidity('Quote is required');
                 isValid = false;
             }
             if (!rating.value || rating.value < 1 || rating.value > 5) {
-                rating.setCustomValidity('Рейтинг должен быть от 1 до 5');
+                rating.setCustomValidity('Rating must be between 1 and 5');
                 isValid = false;
             }
             
@@ -450,6 +547,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 rating: parseInt(rating.value),
                 photo: document.getElementById('photo').value.trim() || '../img/default-avatar.svg'
             };
+        } else if (currentTab === 'articles') {
+            const title = document.getElementById('articleTitle');
+            const excerpt = document.getElementById('articleExcerpt');
+            const content = document.getElementById('articleContent');
+            const image = document.getElementById('articleImage');
+            const date = document.getElementById('articleDate');
+            
+            if (!title.value.trim()) {
+                title.setCustomValidity('Title is required');
+                isValid = false;
+            }
+            if (!excerpt.value.trim()) {
+                excerpt.setCustomValidity('Excerpt is required');
+                isValid = false;
+            }
+            if (!content.value.trim()) {
+                content.setCustomValidity('Content is required');
+                isValid = false;
+            }
+            if (!image.value.trim()) {
+                image.setCustomValidity('Image URL is required');
+                isValid = false;
+            }
+            if (!date.value) {
+                date.setCustomValidity('Date is required');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                title.reportValidity();
+                return;
+            }
+            
+            formData = {
+                title: title.value.trim(),
+                excerpt: excerpt.value.trim(),
+                content: content.value.trim(),
+                category: document.getElementById('articleCategory').value,
+                image: image.value.trim(),
+                date: date.value
+            };
         }
         
         url = isEditing ? `http://localhost:3000/${currentTab}/${id}` : `http://localhost:3000/${currentTab}`;
@@ -463,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify(formData)
         })
         .then(response => {
-            if (!response.ok) throw new Error(`Ошибка HTTP! статус: ${response.status}`);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return response.json();
         })
         .then(data => {
@@ -483,14 +621,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     testimonials.push(data);
                 }
                 renderTestimonialsTable();
+            } else if (currentTab === 'articles') {
+                if (isEditing) {
+                    const index = articles.findIndex(a => a.id == id);
+                    if (index !== -1) articles[index] = data;
+                } else {
+                    articles.push(data);
+                }
+                renderArticlesTable();
             }
             
             adminModal.style.display = 'none';
-            alert(`Успешно ${isEditing ? 'обновлено' : 'добавлено'}!`);
+            alert(`Successfully ${isEditing ? 'updated' : 'added'}!`);
         })
         .catch(error => {
-            console.error('Ошибка:', error);
-            alert(`Ошибка ${isEditing ? 'обновления' : 'добавления'}: ${error.message}`);
+            console.error('Error:', error);
+            alert(`Error ${isEditing ? 'updating' : 'adding'} item: ${error.message}`);
         });
     }
 });

@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSlider() {
         slides.forEach((slide, index) => {
-            slide.style.transform = `translateX(${-100 * currentSlide}%)`; // Изменили формулу
-            slide.style.opacity = index === currentSlide ? '1' : '0'; // Добавили управление прозрачностью
+            slide.style.transform = `translateX(${-100 * currentSlide}%)`; 
+            slide.style.opacity = index === currentSlide ? '1' : '0'; 
         });
         
         dots.forEach((dot, index) => {

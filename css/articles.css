@@ -1,0 +1,356 @@
+.articles-page {
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.articles-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+}
+
+.filters select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.article-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    height: 450px; /* Увеличиваем базовую высоту */
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    height: 550px; /* Увеличиваем высоту при наведении */
+}
+
+.article-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    transition: height 0.4s ease;
+    flex-shrink: 0;
+}
+
+.article-card:hover .article-image {
+    height: 180px; /* Небольшое уменьшение изображения */
+}
+
+.article-info {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.article-category {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+}
+
+.article-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    color: #222;
+}
+
+.article-excerpt {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.article-content-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.article-content-preview {
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-height: 60px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.article-content-full {
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.article-card:hover .article-content-full {
+    max-height: 250px; /* Достаточно для полного контента */
+    opacity: 1;
+    overflow-y: auto;
+}
+
+.article-content-full p {
+    margin-bottom: 12px;
+}
+
+.article-content-full h2,
+.article-content-full h3 {
+    margin: 15px 0 10px;
+    color: #222;
+    font-size: 1.1rem;
+}
+
+.article-content-full ul,
+.article-content-full ol {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.article-content-full li {
+    margin-bottom: 5px;
+}
+
+/* Кастомный скроллбар */
+.article-content-full::-webkit-scrollbar {
+    width: 6px;
+}
+
+.article-content-full::-webkit-scrollbar-track {
+    background: #f8f9fa;
+    border-radius: 3px;
+}
+
+.article-content-full::-webkit-scrollbar-thumb {
+    background: #ced4da;
+    border-radius: 3px;
+}
+
+.article-content-full::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.read-more-hint {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.article-card:hover .read-more-hint {
+    opacity: 0;
+}
+
+/* Скелетоны для загрузки */
+.article-skeleton {
+    background: #eee;
+    border-radius: 8px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.pagination button {
+    padding: 10px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.pagination button:hover {
+    background: #f8f9fa;
+    border-color: #ccc;
+}
+
+.pagination button.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .articles-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .filters {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .article-card {
+        height: 400px;
+    }
+    
+    .article-card:hover {
+        height: 500px;
+    }
+    
+    .article-image {
+        height: 180px;
+    }
+    
+    .article-card:hover .article-image {
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-card {
+        height: 380px;
+    }
+    
+    .article-card:hover {
+        height: 480px;
+    }
+    
+    .article-image {
+        height: 160px;
+    }
+    
+    .article-card:hover .article-image {
+        height: 140px;
+    }
+    
+    .article-info {
+        padding: 15px;
+    }
+    
+    .article-title {
+        font-size: 1.2rem;
+    }
+}
