@@ -1,0 +1,587 @@
+.about-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3.75em 0;
+    gap: 2.5em;
+}
+
+.about-hero-content {
+    flex: 1;
+}
+
+.about-hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 1.25em;
+    color: #2c3e50;
+}
+
+.about-hero-content p {
+    font-size: 1.125em;
+    line-height: 1.6;
+    color: #7f8c8d;
+    margin-bottom: 1.875em;
+}
+
+.about-hero-image {
+    flex: 1;
+    border-radius: 0.75em;
+    overflow: hidden;
+    box-shadow: 0 0.625em 1.875em rgba(0,0,0,0.1);
+}
+
+.about-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-values {
+    margin: 5em 0;
+}
+
+.about-values h2 {
+    text-align: center;
+    font-size: 2.25em;
+    margin-bottom: 3.125em;
+    color: #2c3e50;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75em, 1fr));
+    gap: 1.875em;
+}
+
+.value-card {
+    background: #fff;
+    border-radius: 0.75em;
+    padding: 1.875em;
+    box-shadow: 0 0.3125em 0.9375em rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-0.3125em);
+}
+
+.value-icon {
+    width: 5em;
+    height: 5em;
+    margin: 0 auto 1.25em;
+    background: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.value-icon img {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.value-card h3 {
+    font-size: 1.375em;
+    margin-bottom: 0.9375em;
+    color: #2c3e50;
+}
+
+.value-card p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.about-team {
+    margin: 5em 0;
+}
+
+.about-team h2 {
+    text-align: center;
+    font-size: 2.25em;
+    margin-bottom: 1.25em;
+    color: #2c3e50;
+}
+
+.about-team > p {
+    text-align: center;
+    max-width: 43.75em;
+    margin: 0 auto 3.125em;
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17.5em, 1fr));
+    gap: 1.875em;
+}
+
+.team-member {
+    background: #fff;
+    border-radius: 0.75em;
+    padding: 1.875em;
+    text-align: center;
+    box-shadow: 0 0.3125em 0.9375em rgba(0,0,0,0.08);
+}
+
+.member-photo {
+    width: 7.5em;
+    height: 7.5em;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.25em;
+    border: 0.25em solid #f8f9fa;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    font-size: 1.25em;
+    margin-bottom: 0.3125em;
+    color: #2c3e50;
+}
+
+.member-role {
+    color: #e74c3c;
+    font-weight: 600;
+    margin-bottom: 0.9375em;
+}
+
+.member-desc {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.about-stats {
+    margin: 5em 0;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    padding: 5em 0;
+    color: white;
+    border-radius: 0.75em;
+}
+
+.about-stats h2 {
+    text-align: center;
+    font-size: 2.25em;
+    margin-bottom: 3.125em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.5em, 1fr));
+    gap: 1.875em;
+    max-width: 62.5em;
+    margin: 0 auto;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 0.625em;
+}
+
+.stat-label {
+    font-size: 1.125em;
+    opacity: 0.9;
+}
+
+#map {
+    height: 18.75em;
+    width: 100%;
+    border: 0.0625em solid #ccc;
+    border-radius: 0.3125em;
+}
+
+.contact-map {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    gap: 1.25em;
+    width: 60%;
+}
+
+@media (max-width: 90em) {
+    .about-hero {
+        margin: 3em 0;
+        gap: 2em;
+    }
+    
+    .about-hero-content h1 {
+        font-size: 2.5em;
+    }
+    
+    .about-values,
+    .about-team,
+    .about-stats {
+        margin: 4em 0;
+    }
+    
+    .about-values h2,
+    .about-team h2,
+    .about-stats h2 {
+        font-size: 2em;
+        margin-bottom: 2.5em;
+    }
+    
+    .values-grid,
+    .team-grid,
+    .stats-grid {
+        gap: 1.5em;
+    }
+    
+    .value-card,
+    .team-member {
+        padding: 1.5em;
+    }
+    
+    .about-stats {
+        padding: 4em 0;
+    }
+    
+    .stat-number {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 80em) {
+    .about-hero-content h1 {
+        font-size: 2.25em;
+    }
+    
+    .about-hero-content p {
+        font-size: 1.0625em;
+    }
+    
+    .value-icon,
+    .member-photo {
+        width: 4.5em;
+        height: 4.5em;
+    }
+    
+    .value-icon img {
+        width: 2.25em;
+        height: 2.25em;
+    }
+    
+    .value-card h3 {
+        font-size: 1.25em;
+    }
+    
+    .team-member h3 {
+        font-size: 1.125em;
+    }
+    
+    .contact-map {
+        width: 70%;
+    }
+}
+
+@media (max-width: 70em) {
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 2.5em;
+    }
+    
+    .about-hero-content,
+    .about-hero-image {
+        flex: none;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .values-grid,
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contact-map {
+        width: 80%;
+    }
+}
+
+@media (max-width: 64em) {
+    .about-hero-content h1 {
+        font-size: 2em;
+    }
+    
+    .about-values h2,
+    .about-team h2,
+    .about-stats h2 {
+        font-size: 1.875em;
+    }
+    
+    .value-icon,
+    .member-photo {
+        width: 4em;
+        height: 4em;
+    }
+    
+    .value-icon img {
+        width: 2em;
+        height: 2em;
+    }
+    
+    .member-photo {
+        width: 6em;
+        height: 6em;
+    }
+    
+    .stat-number {
+        font-size: 2.25em;
+    }
+    
+    .stat-label {
+        font-size: 1em;
+    }
+    
+    #map {
+        height: 16em;
+    }
+    
+    .contact-map {
+        width: 90%;
+    }
+}
+
+@media (max-width: 48em) {
+    .about-hero {
+        margin: 2.5em 0;
+        gap: 2em;
+    }
+    
+    .about-hero-content h1 {
+        font-size: 1.875em;
+        margin-bottom: 1em;
+    }
+    
+    .about-hero-content p {
+        font-size: 1em;
+        margin-bottom: 1.5em;
+    }
+    
+    .about-values,
+    .about-team,
+    .about-stats {
+        margin: 3em 0;
+    }
+    
+    .values-grid,
+    .team-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25em;
+    }
+    
+    .value-card,
+    .team-member {
+        padding: 1.25em;
+    }
+    
+    .value-card h3 {
+        font-size: 1.25em;
+    }
+    
+    .team-member h3 {
+        font-size: 1.125em;
+    }
+    
+    .about-stats {
+        padding: 3em 0;
+    }
+    
+    .stat-number {
+        font-size: 2em;
+    }
+    
+    #map {
+        height: 14em;
+    }
+    
+    .contact-map {
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media (max-width: 37.5em) {
+    .about-hero {
+        margin: 2em 0;
+        gap: 1.5em;
+    }
+    
+    .about-hero-content h1 {
+        font-size: 1.625em;
+    }
+    
+    .about-values h2,
+    .about-team h2,
+    .about-stats h2 {
+        font-size: 1.5em;
+        margin-bottom: 2em;
+    }
+    
+    .value-icon,
+    .member-photo {
+        width: 3.5em;
+        height: 3.5em;
+        margin-bottom: 1em;
+    }
+    
+    .value-icon img {
+        width: 1.75em;
+        height: 1.75em;
+    }
+    
+    .member-photo {
+        width: 5em;
+        height: 5em;
+    }
+    
+    .about-team > p {
+        margin-bottom: 2em;
+        font-size: 0.9375em;
+    }
+    
+    .about-stats {
+        margin: 2.5em 0;
+        padding: 2em 0;
+    }
+    
+    .stat-number {
+        font-size: 1.75em;
+    }
+    
+    .stat-label {
+        font-size: 0.9375em;
+    }
+    
+    #map {
+        height: 12em;
+    }
+}
+
+@media (max-width: 30em) {
+    .about-hero-content h1 {
+        font-size: 1.5em;
+    }
+    
+    .about-hero-content p {
+        font-size: 0.9375em;
+    }
+    
+    .value-card,
+    .team-member {
+        padding: 1em;
+    }
+    
+    .value-card h3 {
+        font-size: 1.125em;
+    }
+    
+    .value-card p,
+    .member-desc {
+        font-size: 0.9375em;
+    }
+    
+    .team-member h3 {
+        font-size: 1.0625em;
+    }
+    
+    .member-role {
+        font-size: 0.875em;
+    }
+    
+    .stats-grid {
+        gap: 1em;
+    }
+    
+    .stat-item {
+        padding: 0.5em;
+    }
+    
+    .stat-number {
+        font-size: 1.5em;
+    }
+    
+    #map {
+        height: 10em;
+    }
+}
+
+@media (max-width: 23.4375em) {
+    .about-hero {
+        margin: 1.5em 0;
+    }
+    
+    .about-hero-content h1 {
+        font-size: 1.375em;
+        margin-bottom: 0.75em;
+    }
+    
+    .about-values,
+    .about-team {
+        margin: 2em 0;
+    }
+    
+    .values-grid,
+    .team-grid {
+        gap: 1em;
+    }
+    
+    .value-icon {
+        width: 3em;
+        height: 3em;
+    }
+    
+    .value-icon img {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    
+    .member-photo {
+        width: 4em;
+        height: 4em;
+    }
+    
+    .about-stats {
+        margin: 2em 0;
+        padding: 1.5em 0;
+    }
+    
+    .about-stats h2 {
+        margin-bottom: 2em;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.875em;
+    }
+    
+    .stat-number {
+        font-size: 1.375em;
+    }
+    
+    .stat-label {
+        font-size: 0.875em;
+    }
+    
+    #map {
+        height: 8em;
+    }
+}

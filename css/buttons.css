@@ -2,17 +2,17 @@
     color: white;
     background: #FB8F1D;
     border-color: #FB8F1D;
-    font-size: 15px;
+    font-size: 0.9375em;
     text-decoration: none;
-    padding: 15px 65px;
-    border-radius: 8px;
+    padding: 0.9375em 4.0625em;
+    border-radius: 0.5em;
     font-weight: 500;
-    display: inline-block; 
+    display: inline-block;
     position: relative;
     overflow: hidden;
     z-index: 1;
     transition: color 0.3s ease, border-color 0.3s ease;
-    border: 1px solid; 
+    border: 0.0625em solid;
     cursor: pointer;
 }
 

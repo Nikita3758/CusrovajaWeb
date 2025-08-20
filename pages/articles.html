@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Stories | Travel</title>
+    <link rel="stylesheet" href="../css/preloader.css">
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/articles.css">
 </head>
 <body>
+            <div class="preloader" id="preloader">
+        <div class="loader-container">
+            <div class="travel-loader"></div>
+            <div class="loader-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
     <div class="container">
-        <header>
-            <div class="logo"><img src="../img/logo.svg" alt="Travel Logo"></div>
+                <header>
+            <a href="home.html"><img src="../img/logo.svg" alt="Логотип Travel" data-i18n="logoAlt"></a>
+            
+            <button class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
             <div class="right-div-header">
                 <nav>
                     <ul>
                         <li><a href="home.html" data-i18n="home">Главная</a></li>
                         <li><a href="destinations.html" data-i18n="destinations">Направления</a></li>
-                        <li><a href="#" data-i18n="about">О нас</a></li>
-                        <li><a href="#" data-i18n="partner">Партнеры</a></li>
+                        <li><a href="about.html" data-i18n="about">О нас</a></li>
+                        <li><a href="partner.html" data-i18n="partner">Партнеры</a></li>
                     </ul>
                 </nav>
                 <div class="auth-buttons">
@@ -26,14 +44,14 @@
                     
                     <div class="user-menu" id="user-menu" style="display: none;">
                         <button class="user-btn" id="user-btn">
-                            <span id="username-display">Пользователь</span>
+                            <span id="username-display" data-i18n="user">Пользователь</span>
                             <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
                                 <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
                             </svg>
                         </button>
                         <div class="dropdown-menu" id="dropdown-menu">
                             <div class="dropdown-header">
-                                <span id="dropdown-username">Имя пользователя</span>
+                                <span id="dropdown-username" data-i18n="user">Имя пользователя</span>
                             </div>
                             <button class="dropdown-item" id="settings-btn" data-i18n="settings">Настройки</button>
                             <button class="dropdown-item logout-btn" id="logout-btn" data-i18n="logout">Выход</button>
@@ -43,85 +61,208 @@
             </div>
         </header>
 
-        <main class="articles-page">
-            <div class="page-header">
-                <h1>Travel Stories</h1>
-                <p>Discover inspiring travel experiences and tips from our experts</p>
+        <div class="overlay" id="overlay"></div>
+        <div class="mobile-menu" id="mobile-menu">
+            <nav>
+                <ul>
+                    <li><a href="home.html" data-i18n="home">Главная</a></li>
+                    <li><a href="destinations.html" data-i18n="destinations">Направления</a></li>
+                    <li><a href="about.html" data-i18n="about">О нас</a></li>
+                    <li><a href="partner.html" data-i18n="partner">Партнеры</a></li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-auth">
+                <a href="login.html" class="mobile-login" data-i18n="login">Вход</a>
+                <a href="register.html" class="mobile-register" data-i18n="register">Регистрация</a>
             </div>
             
-            <div class="articles-controls">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search articles...">
-                    <button id="searchBtn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
+            <div class="mobile-user-menu" id="mobile-user-menu" style="display: none;">
+                <div class="mobile-user-info">
+                    <span id="mobile-username" data-i18n="user">Пользователь</span>
+                </div>
+                <ul>
+                    <li><a href="#" onclick="openMobileSettings(); return false;" data-i18n="settings">Настройки</a></li>
+                    <li><a href="#" onclick="mobileLogout(); return false;" data-i18n="logout">Выход</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal" id="settings-modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2 data-i18n="settings">Настройки</h2>
+                
+                <div class="settings-section">
+                    <h3 data-i18n="language">Язык / Language</h3>
+                    <select id="language-select">
+                        <option value="ru" data-i18n="russian">Русский</option>
+                        <option value="en" data-i18n="english">English</option>
+                    </select>
                 </div>
                 
-                <div class="filters">
-                    <select id="categoryFilter">
-                        <option value="">All Categories</option>
-                        <option value="wellness">Wellness</option>
-                        <option value="food">Food</option>
-                        <option value="adventure">Adventure</option>
-                        <option value="sports">Sports</option>
-                        <option value="culture">Culture</option>
-                    </select>
-                    
-                    <select id="sortBy">
-                        <option value="newest">Newest First</option>
-                        <option value="oldest">Oldest First</option>
-                        <option value="popular">Most Popular</option>
-                    </select>
+                <div class="settings-section">
+                    <h3 data-i18n="fontSize">Размер шрифта</h3>
+                    <div class="font-size-buttons">
+                        <button data-size="small" data-i18n="small">Маленький</button>
+                        <button data-size="medium" class="active" data-i18n="medium">Средний</button>
+                        <button data-size="large" data-i18n="large">Большой</button>
+                    </div>
                 </div>
+                
+                <div class="settings-section">
+                    <h3 data-i18n="colorScheme">Цветовая схема</h3>
+                    <div class="color-schemes">
+                        <div class="color-scheme" data-scheme="dark-white">
+                            <div class="color-preview dark-white"></div>
+                            <span data-i18n="darkWhite">Черный/Белый</span>
+                        </div>
+                        <div class="color-scheme" data-scheme="dark-green">
+                            <div class="color-preview dark-green"></div>
+                            <span data-i18n="darkGreen">Черный/Зеленый</span>
+                        </div>
+                        <div class="color-scheme" data-scheme="light-black">
+                            <div class="color-preview light-black"></div>
+                            <span data-i18n="lightBlack">Белый/Черный</span>
+                        </div>
+                        <div class="color-scheme" data-scheme="beige-brown">
+                            <div class="color-preview beige-brown"></div>
+                            <span data-i18n="beigeBrown">Бежевый/Коричневый</span>
+                        </div>
+                        <div class="color-scheme" data-scheme="blue-darkblue">
+                            <div class="color-preview blue-darkblue"></div>
+                            <span data-i18n="blueDarkblue">Голубой/Темно-синий</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3 data-i18n="accessibility">Версия для слабовидящих</h3>
+                    <label class="switch">
+                        <input type="checkbox" id="accessibility-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <div id="accessibility-options" style="display: none;">
+                        <label>
+                            <input type="checkbox" id="disable-images">
+                            <span data-i18n="disableImages">Отключить изображения</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="reset-btn" id="reset-settings" data-i18n="reset">Сбросить настройки</button>
             </div>
-            
-            <div class="articles-grid" id="articlesGrid">
-                <div class="article-skeleton"></div>
-                <div class="article-skeleton"></div>
-                <div class="article-skeleton"></div>
-                <div class="article-skeleton"></div>
-                <div class="article-skeleton"></div>
-                <div class="article-skeleton"></div>
-            </div>
-            
-            <div class="pagination" id="pagination">
-            </div>
-        </main>
+        </div>
 
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Travel</h3>
-                    <p>Discover the world with our curated travel experiences and expert guides.</p>
+<main class="articles-page">
+    <div class="page-header">
+        <h1 data-i18n="travelStories">Travel Stories</h1>
+        <p data-i18n="discoverStories">Discover inspiring travel experiences and tips from our experts</p>
+    </div>
+    
+    <div class="articles-controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" data-i18n="searchArticles" placeholder="Search articles...">
+            <button id="searchBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="filters">
+            <select id="categoryFilter">
+                <option value="" data-i18n="allCategories">All Categories</option>
+                <option value="wellness" data-i18n="wellness">Wellness</option>
+                <option value="food" data-i18n="food">Food</option>
+                <option value="adventure" data-i18n="adventure">Adventure</option>
+                <option value="sports" data-i18n="sports">Sports</option>
+                <option value="culture" data-i18n="culture">Culture</option>
+            </select>
+            
+            <select id="sortBy">
+                <option value="newest" data-i18n="newestFirst">Newest First</option>
+                <option value="oldest" data-i18n="oldestFirst">Oldest First</option>
+                <option value="popular" data-i18n="mostPopular">Most Popular</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="articles-grid" id="articlesGrid">
+        <div class="article-skeleton"></div>
+        <div class="article-skeleton"></div>
+        <div class="article-skeleton"></div>
+        <div class="article-skeleton"></div>
+        <div class="article-skeleton"></div>
+        <div class="article-skeleton"></div>
+    </div>
+    
+    <div class="pagination" id="pagination">
+    </div>
+</main>
+    </div>
+                <footer>
+            <div class="footer-top">
+                <div class="footer-left">
+                    <a href="home.html"><img src="../img/logo.svg" alt="Travel Logo" data-i18n="logoAlt"></a>
+                    <p class="footer-text" data-i18n="footerText">Plan and book your perfect trip with expert advice, travel tips destination information from us</p>
+                    <p class="copyright" data-i18n="copyright">©2020 Thousand Sunny. All rights reserved</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="destinations.html">Destinations</a></li>
-                        <li><a href="articles.html">Stories</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Subscribe</h3>
-                    <form class="subscribe-form">
-                        <input type="email" placeholder="Your email">
-                        <button type="submit">Subscribe</button>
-                    </form>
+
+                <div class="footer-right">
+                    <div class="footer-section">
+                        <h3 data-i18n="destinationsFooter">Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" data-i18n="africa">Africa</a></li>
+                            <li><a href="#" data-i18n="antarctica">Antarctica</a></li>
+                            <li><a href="#" data-i18n="asia">Asia</a></li>
+                            <li><a href="#" data-i18n="europe">Europe</a></li>
+                            <li><a href="#" data-i18n="america">America</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 data-i18n="shop">Shop</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" data-i18n="destinationGuides">Destination Guides</a></li>
+                            <li><a href="#" data-i18n="pictorialGifts">Pictorial & Gifts</a></li>
+                            <li><a href="#" data-i18n="specialOffers">Special Offers</a></li>
+                            <li><a href="#" data-i18n="deliveryTimes">Delivery Times</a></li>
+                            <li><a href="#" data-i18n="faqs">FAQs</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 data-i18n="interests">Interests</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" data-i18n="adventureTravel">Adventure Travel</a></li>
+                            <li><a href="#" data-i18n="artCulture">Art And Culture</a></li>
+                            <li><a href="#" data-i18n="wildlifeNature">Wildlife And Nature</a></li>
+                            <li><a href="#" data-i18n="familyHolidays">Family Holidays</a></li>
+                            <li><a href="#" data-i18n="foodDrink">Food And Drink</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Travel. All rights reserved.</p>
+                <div class="bottom-logo">
+                    <a href="https://twitter.com"><img src="../img/twitter.svg" alt="Twitter logo" data-i18n="twitterAlt"></a>
+                    <a href="https://facebook.com"><img src="../img/facebook.svg" alt="Facebook logo" data-i18n="facebookAlt"></a>
+                    <a href="https://instagram.com"><img src="../img/inst.svg" alt="Instagram logo" data-i18n="instagramAlt"></a>
+                    <a href="https://linkedin.com"><img src="../img/in.svg" alt="LinkedIn logo" data-i18n="linkedinAlt"></a>
+                    <a href="https://youtube.com"><img src="../img/youtube.svg" alt="YouTube logo" data-i18n="youtubeAlt"></a>
+                </div>
             </div>
         </footer>
-    </div>
 
     <script src="../js/stories/all-stories.js"></script>
     <script src="../js/i18n/i18n.js"></script>
+    <script src="../js/menu-user/auth-menu.js"></script>
     <script src="../js/menu-user/menu.js"></script>
+    <script src="../js/menu-user/mobile-menu.js"></script>
+    <script src="../js/menu-user/settings.js"></script>
+    <script src="../js/burger-menu/burger-menu.js"></script>
 </body>
 </html>

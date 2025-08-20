@@ -9,7 +9,7 @@ body {
     background-color: #f8f9fa;
     color: #333;
     line-height: 1.6;
-    padding: 20px;
+    padding: 1.25em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,31 +18,31 @@ body {
 
 .auth-container {
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    border-radius: 0.625em;
+    box-shadow: 0 0.25em 1.25em rgba(0, 0, 0, 0.1);
+    padding: 2.5em;
     width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
+    max-width: 31.25em;
+    margin: 1.25em auto;
 }
 
 .auth-container h1 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.875em;
     color: #2c3e50;
-    font-size: 28px;
+    font-size: 1.75em;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25em;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5em;
 }
 
 .form-group label {
@@ -62,10 +62,10 @@ input[type="password"],
 input[type="date"],
 select,
 textarea {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
+    padding: 0.75em 0.9375em;
+    border: 0.0625em solid #ddd;
+    border-radius: 0.375em;
+    font-size: 1em;
     transition: border-color 0.3s;
 }
 
@@ -78,33 +78,33 @@ select:focus,
 textarea:focus {
     outline: none;
     border-color: #FB8F1D;
-    box-shadow: 0 0 0 2px rgba(251, 143, 29, 0.2);
+    box-shadow: 0 0 0 0.125em rgba(251, 143, 29, 0.2);
 }
 
 .password-options {
     display: flex;
-    gap: 20px;
-    margin-bottom: 10px;
+    gap: 1.25em;
+    margin-bottom: 0.625em;
 }
 
 .password-options label {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5em;
     cursor: pointer;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 1.125em;
+    height: 1.125em;
     accent-color: #FB8F1D;
 }
 
 .agreement {
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 0.625em;
 }
 
 .agreement label {
@@ -125,9 +125,9 @@ input[type="submit"] {
     background-color: #FB8F1D;
     color: white;
     border: none;
-    padding: 14px 20px;
-    border-radius: 6px;
-    font-size: 16px;
+    padding: 0.875em 1.25em;
+    border-radius: 0.375em;
+    font-size: 1em;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -146,9 +146,9 @@ button:disabled {
 #generate-username {
     background-color: #f0f0f0;
     color: #333;
-    padding: 8px 12px;
-    font-size: 14px;
-    margin-left: 10px;
+    padding: 0.5em 0.75em;
+    font-size: 0.875em;
+    margin-left: 0.625em;
 }
 
 #generate-username:hover {
@@ -157,8 +157,8 @@ button:disabled {
 
 .error-message {
     color: #e74c3c;
-    font-size: 14px;
-    margin-top: 5px;
+    font-size: 0.875em;
+    margin-top: 0.3125em;
     display: none;
 }
 
@@ -178,21 +178,21 @@ textarea.error {
 
 .password-requirements {
     background-color: #f8f9fa;
-    padding: 12px;
-    border-radius: 6px;
-    margin-top: 10px;
-    font-size: 14px;
+    padding: 0.75em;
+    border-radius: 0.375em;
+    margin-top: 0.625em;
+    font-size: 0.875em;
 }
 
 .password-requirements ul {
     list-style-type: none;
-    margin-top: 8px;
+    margin-top: 0.5em;
 }
 
 .password-requirements li {
-    margin-bottom: 5px;
+    margin-bottom: 0.3125em;
     position: relative;
-    padding-left: 20px;
+    padding-left: 1.25em;
 }
 
 .password-requirements li:before {
@@ -223,7 +223,7 @@ textarea.error {
 .username-generator {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625em;
 }
 
 .username-generator input {
@@ -231,14 +231,14 @@ textarea.error {
 }
 
 #attempts-left {
-    font-size: 12px;
+    font-size: 0.75em;
     color: #7f8c8d;
     white-space: nowrap;
 }
 
 .auth-link {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1.25em;
     color: #7f8c8d;
 }
 
@@ -250,28 +250,6 @@ textarea.error {
 
 .auth-link a:hover {
     text-decoration: underline;
-}
-
-/* Адаптивность */
-@media (max-width: 600px) {
-    .auth-container {
-        padding: 30px 20px;
-    }
-
-    .password-options {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .username-generator {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #generate-username {
-        margin-left: 0;
-        margin-top: 10px;
-    }
 }
 
 input[type="date"] {
@@ -296,15 +274,397 @@ input[type="date"]::-webkit-clear-button {
 }
 
 input[type="tel"] {
-    letter-spacing: 1px;
+    letter-spacing: 0.0625em;
 }
 
 .required:after {
     content: " *";
     color: #e74c3c;
-    margin-left: 4px;
+    margin-left: 0.25em;
 }
 
 label.required {
     font-weight: 500;
+}
+
+@media (max-width: 90em) {
+    body {
+        padding: 1em;
+    }
+    
+    .auth-container {
+        padding: 2em;
+        max-width: 28em;
+    }
+    
+    .auth-container h1 {
+        font-size: 1.625em;
+        margin-bottom: 1.5em;
+    }
+    
+    form {
+        gap: 1em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        padding: 0.6875em 0.875em;
+        font-size: 0.95em;
+    }
+    
+    button,
+    input[type="submit"] {
+        padding: 0.8125em 1.125em;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 80em) {
+    .auth-container {
+        padding: 1.75em;
+        max-width: 26em;
+    }
+    
+    .auth-container h1 {
+        font-size: 1.5em;
+    }
+    
+    .password-options {
+        gap: 1em;
+    }
+    
+    .username-generator {
+        gap: 0.5em;
+    }
+    
+    #generate-username {
+        margin-left: 0.5em;
+        font-size: 0.85em;
+        padding: 0.4375em 0.6875em;
+    }
+}
+
+@media (max-width: 70em) {
+    body {
+        padding: 0.875em;
+        align-items: flex-start;
+        min-height: auto;
+    }
+    
+    .auth-container {
+        margin: 1em auto;
+        padding: 1.5em;
+    }
+    
+    .auth-container h1 {
+        margin-bottom: 1.25em;
+    }
+    
+    .form-group label {
+        font-size: 0.95em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        padding: 0.625em 0.8125em;
+        font-size: 0.9em;
+    }
+    
+    .password-requirements {
+        font-size: 0.85em;
+        padding: 0.625em;
+    }
+    
+    .auth-link {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 64em) {
+    .auth-container {
+        max-width: 24em;
+        padding: 1.25em;
+    }
+    
+    .auth-container h1 {
+        font-size: 1.375em;
+    }
+    
+    .password-options {
+        flex-direction: column;
+        gap: 0.625em;
+    }
+    
+    .username-generator {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.625em;
+    }
+    
+    #generate-username {
+        margin-left: 0;
+        margin-top: 0.5em;
+        align-self: flex-start;
+    }
+    
+    .agreement {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+    }
+    
+    .agreement label {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 48em) {
+    body {
+        padding: 0.625em;
+    }
+    
+    .auth-container {
+        padding: 1.125em;
+        border-radius: 0.5em;
+    }
+    
+    .auth-container h1 {
+        font-size: 1.25em;
+        margin-bottom: 1em;
+    }
+    
+    form {
+        gap: 0.875em;
+    }
+    
+    .form-group {
+        gap: 0.375em;
+    }
+    
+    .form-group label {
+        font-size: 0.9em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        padding: 0.5625em 0.75em;
+        font-size: 0.875em;
+        border-radius: 0.3125em;
+    }
+    
+    button,
+    input[type="submit"] {
+        padding: 0.75em 1em;
+        font-size: 0.9em;
+        border-radius: 0.3125em;
+    }
+    
+    .error-message {
+        font-size: 0.8em;
+    }
+    
+    .password-requirements {
+        font-size: 0.8em;
+        padding: 0.5625em;
+    }
+    
+    .auth-link {
+        margin-top: 1em;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 37.5em) {
+    .auth-container {
+        padding: 1.875em 1.25em;
+    }
+
+    .password-options {
+        flex-direction: column;
+        gap: 0.625em;
+    }
+
+    .username-generator {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #generate-username {
+        margin-left: 0;
+        margin-top: 0.625em;
+    }
+    
+    body {
+        padding: 0.5em;
+    }
+    
+    .auth-container {
+        padding: 1em;
+        margin: 0.75em auto;
+    }
+    
+    .auth-container h1 {
+        font-size: 1.125em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        padding: 0.5em 0.6875em;
+        font-size: 0.85em;
+    }
+    
+    button,
+    input[type="submit"] {
+        padding: 0.6875em 0.9375em;
+        font-size: 0.85em;
+    }
+    
+    .agreement label {
+        font-size: 0.85em;
+    }
+    
+    #attempts-left {
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 30em) {
+    .auth-container {
+        padding: 0.875em;
+        box-shadow: 0 0.125em 0.625em rgba(0, 0, 0, 0.1);
+    }
+    
+    .auth-container h1 {
+        font-size: 1em;
+        margin-bottom: 0.875em;
+    }
+    
+    form {
+        gap: 0.75em;
+    }
+    
+    .form-group label {
+        font-size: 0.85em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        padding: 0.4375em 0.625em;
+        font-size: 0.8em;
+    }
+    
+    button,
+    input[type="submit"] {
+        padding: 0.625em 0.875em;
+        font-size: 0.8em;
+    }
+    
+    .password-requirements {
+        font-size: 0.75em;
+        padding: 0.5em;
+    }
+    
+    .auth-link {
+        font-size: 0.85em;
+        margin-top: 0.875em;
+    }
+}
+
+@media (max-width: 23.4375em) {
+    body {
+        padding: 0.375em;
+    }
+    
+    .auth-container {
+        padding: 0.75em;
+        margin: 0.5em auto;
+    }
+    
+    .auth-container h1 {
+        font-size: 0.9375em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        padding: 0.375em 0.5625em;
+        font-size: 0.75em;
+    }
+    
+    button,
+    input[type="submit"] {
+        padding: 0.5625em 0.75em;
+        font-size: 0.75em;
+    }
+    
+    .form-group label {
+        font-size: 0.8em;
+    }
+    
+    .error-message {
+        font-size: 0.7em;
+    }
+    
+    .password-requirements {
+        font-size: 0.7em;
+    }
+}
+
+/* Улучшения для touch-устройств */
+@media (max-width: 90em) and (hover: none) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        min-height: 44px;
+    }
+    
+    button,
+    input[type="submit"] {
+        min-height: 44px;
+    }
+    
+    input[type="radio"],
+    input[type="checkbox"] {
+        min-width: 20px;
+        min-height: 20px;
+    }
+}
+
+@media (max-width: 90em) {
+    .auth-container {
+        transition: all 0.3s ease;
+    }
 }

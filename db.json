@@ -47,6 +47,18 @@
       "agreement": true,
       "role": "admin",
       "createdAt": "2025-08-18T15:00:21.245Z"
+    },
+    {
+      "id": "0b0d",
+      "phone": "375294545353",
+      "email": "gggg@gmail.com",
+      "birthDate": "1999-04-20",
+      "password": "g$49^obEfPzB",
+      "fullName": "ewrwerw rwerwe",
+      "username": "ewrwerw_r50",
+      "agreement": true,
+      "role": "user",
+      "createdAt": "2025-08-20T10:24:01.127Z"
     }
   ],
   "testimonials": [
@@ -168,7 +180,7 @@
       "date": "2025-08-10"
     },
     {
-      "id": "2", 
+      "id": "2",
       "title": "The best Kyoto restaurant to try Japanese food",
       "excerpt": "From tofu to teahouses, here's our guide to Kyoto's best restaurants to visit...",
       "content": "<p>Kyoto food content...</p>",

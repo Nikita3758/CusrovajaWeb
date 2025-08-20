@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const login = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
+        const currentLang = localStorage.getItem('language') || 'ru';
         
         try {
             const response = await fetch('http://localhost:3000/users');
@@ -13,22 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const user = users.find(u => 
                 (u.email === login || u.phone === login) && 
-                verifyPassword(password, u.password));
+                verifyPassword(password, u.password)
+            );
             
             if (user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 window.location.href = '../../pages/home.html';
             } else {
-                document.getElementById('login-error').textContent = 'Неверный email/телефон или пароль';
+                document.getElementById('login-error').textContent = 
+                    translations[currentLang].loginError;
             }
         } catch (error) {
             console.error('Ошибка:', error);
-            document.getElementById('login-error').textContent = 'Произошла ошибка при входе';
+            document.getElementById('login-error').textContent = 
+                translations[currentLang].loginServerError;
         }
     });
 });
 
 function verifyPassword(inputPassword, storedHash) {
-
     return inputPassword === storedHash; 
 }

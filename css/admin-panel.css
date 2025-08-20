@@ -1,18 +1,18 @@
 .admin-panel {
-    padding: 40px 0;
+    padding: 2.5em 0;
 }
 
 .admin-tabs {
     display: flex;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 30px;
+    border-bottom: 0.0625em solid #ddd;
+    margin-bottom: 1.875em;
 }
 
 .tab-btn {
-    padding: 12px 24px;
+    padding: 0.75em 1.5em;
     background: none;
     border: none;
-    border-bottom: 3px solid transparent;
+    border-bottom: 0.1875em solid transparent;
     cursor: pointer;
     font-weight: 600;
     color: #666;
@@ -33,7 +33,7 @@
 }
 
 .admin-controls {
-    margin-bottom: 20px;
+    margin-bottom: 1.25em;
 }
 
 .admin-table {
@@ -43,14 +43,14 @@
 
 .admin-table th {
     text-align: left;
-    padding: 12px;
+    padding: 0.75em;
     background-color: #f5f5f5;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 0.125em solid #ddd;
 }
 
 .admin-table td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
+    padding: 0.75em;
+    border-bottom: 0.0625em solid #eee;
     vertical-align: middle;
 }
 
@@ -59,19 +59,19 @@
 }
 
 .admin-thumbnail {
-    width: 60px;
-    height: 40px;
+    width: 3.75em;
+    height: 2.5em;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0.25em;
 }
 
 .action-btn {
-    padding: 6px 12px;
+    padding: 0.375em 0.75em;
     border: none;
-    border-radius: 4px;
+    border-radius: 0.25em;
     cursor: pointer;
-    font-size: 0.9rem;
-    margin-right: 5px;
+    font-size: 0.9em;
+    margin-right: 0.3125em;
     transition: background-color 0.2s;
 }
 
@@ -89,7 +89,6 @@
     opacity: 0.9;
 }
 
-/* Модальное окно */
 .modal {
     display: none;
     position: fixed;
@@ -104,28 +103,28 @@
 .modal-content {
     background-color: white;
     margin: 5% auto;
-    padding: 30px;
-    border-radius: 8px;
+    padding: 1.875em;
+    border-radius: 0.5em;
     width: 80%;
-    max-width: 700px;
+    max-width: 43.75em;
     position: relative;
 }
 
 .close-modal {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
+    top: 0.9375em;
+    right: 0.9375em;
+    font-size: 1.5em;
     cursor: pointer;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 1.25em;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 0.5em;
     font-weight: 600;
 }
 
@@ -135,25 +134,199 @@
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 0.625em;
+    border: 0.0625em solid #ddd;
+    border-radius: 0.25em;
+    font-size: 1em;
 }
 
 .form-group textarea {
-    min-height: 100px;
+    min-height: 6.25em;
     resize: vertical;
 }
 
-/* Стили для рейтинга */
 .rating-stars {
     color: gold;
-    font-size: 1.2rem;
+    font-size: 1.2em;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+@media (max-width: 90em) {
+    .admin-panel {
+        padding: 2em 1em;
+    }
+    
+    .admin-tabs {
+        margin-bottom: 1.5em;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    
+    .tab-btn {
+        padding: 0.625em 1.25em;
+        font-size: 0.9375em;
+        white-space: nowrap;
+    }
+    
+    .admin-controls {
+        margin-bottom: 1em;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.625em;
+    }
+    
+    .admin-thumbnail {
+        width: 3.25em;
+        height: 2.25em;
+    }
+    
+    .action-btn {
+        padding: 0.3125em 0.625em;
+        font-size: 0.85em;
+        margin-right: 0.25em;
+    }
+    
+    .modal-content {
+        padding: 1.5em;
+        width: 85%;
+        margin: 8% auto;
+    }
+}
+
+@media (max-width: 80em) {
+    .admin-panel {
+        padding: 1.75em 0.875em;
+    }
+    
+    .tab-btn {
+        padding: 0.5625em 1.125em;
+        font-size: 0.9em;
+    }
+    
+    .admin-table {
+        font-size: 0.9375em;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.5625em;
+    }
+    
+    .admin-thumbnail {
+        width: 3em;
+        height: 2em;
+    }
+    
+    .modal-content {
+        padding: 1.25em;
+        width: 90%;
+    }
+    
+    .form-group {
+        margin-bottom: 1em;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+        padding: 0.5625em;
+        font-size: 0.9375em;
+    }
+}
+
+@media (max-width: 70em) {
+    .admin-tabs {
+        flex-direction: column;
+        border-bottom: none;
+        gap: 0.5em;
+    }
+    
+    .tab-btn {
+        border-bottom: none;
+        border-left: 0.1875em solid transparent;
+        text-align: left;
+    }
+    
+    .tab-btn.active {
+        border-bottom-color: transparent;
+        border-left-color: var(--primary-color);
+    }
+    
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        min-width: 120px;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 64em) {
+    .admin-panel {
+        padding: 1.5em 0.75em;
+    }
+    
+    .tab-btn {
+        padding: 0.5em 1em;
+        font-size: 0.875em;
+    }
+    
+    .admin-table {
+        font-size: 0.875em;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.5em;
+    }
+    
+    .action-btn {
+        padding: 0.25em 0.5em;
+        font-size: 0.8em;
+    }
+    
+    .modal-content {
+        padding: 1em;
+        margin: 3% auto;
+    }
+    
+    .close-modal {
+        top: 0.5em;
+        right: 0.5em;
+        font-size: 1.25em;
+    }
+    
+    .form-group label {
+        font-size: 0.9375em;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+        padding: 0.5em;
+        font-size: 0.875em;
+    }
+    
+    .form-group textarea {
+        min-height: 5em;
+    }
+}
+
+@media (max-width: 48em) {
     .admin-table {
         display: block;
         overflow-x: auto;
@@ -162,5 +335,213 @@
     .modal-content {
         width: 95%;
         margin: 10% auto;
+    }
+    
+    .admin-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        border-bottom: 0.0625em solid #ddd;
+    }
+    
+    .tab-btn {
+        border-left: none;
+        border-bottom: 0.1875em solid transparent;
+        text-align: center;
+        flex-shrink: 0;
+    }
+    
+    .tab-btn.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--primary-color);
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        min-width: 100px;
+        font-size: 0.85em;
+    }
+    
+    .admin-thumbnail {
+        width: 2.5em;
+        height: 1.75em;
+    }
+    
+    .action-btn {
+        display: block;
+        margin-bottom: 0.25em;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 37.5em) {
+    .admin-panel {
+        padding: 1.25em 0.5em;
+    }
+    
+    .tab-btn {
+        padding: 0.4375em 0.875em;
+        font-size: 0.8125em;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.4375em;
+        font-size: 0.8125em;
+    }
+    
+    .admin-thumbnail {
+        width: 2.25em;
+        height: 1.5em;
+    }
+    
+    .modal-content {
+        padding: 0.875em;
+        margin: 2% auto;
+        width: 98%;
+    }
+    
+    .close-modal {
+        top: 0.375em;
+        right: 0.375em;
+        font-size: 1.125em;
+    }
+    
+    .form-group {
+        margin-bottom: 0.875em;
+    }
+    
+    .form-group label {
+        font-size: 0.875em;
+        margin-bottom: 0.375em;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+        padding: 0.4375em;
+        font-size: 0.8125em;
+    }
+    
+    .rating-stars {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 30em) {
+    .admin-tabs {
+        flex-direction: column;
+        gap: 0.375em;
+        border-bottom: none;
+    }
+    
+    .tab-btn {
+        border-left: 0.1875em solid transparent;
+        border-bottom: none;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .tab-btn.active {
+        border-bottom-color: transparent;
+        border-left-color: var(--primary-color);
+    }
+    
+    .admin-table {
+        font-size: 0.8em;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.375em;
+        min-width: 90px;
+    }
+    
+    .action-btn {
+        font-size: 0.75em;
+        padding: 0.25em 0.375em;
+    }
+    
+    .modal-content {
+        padding: 0.75em;
+        margin: 1% auto;
+    }
+    
+    .form-group textarea {
+        min-height: 4em;
+    }
+}
+
+@media (max-width: 23.4375em) {
+    .admin-panel {
+        padding: 1em 0.375em;
+    }
+    
+    .tab-btn {
+        padding: 0.375em 0.75em;
+        font-size: 0.75em;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.3125em;
+        font-size: 0.75em;
+    }
+    
+    .admin-thumbnail {
+        width: 2em;
+        height: 1.25em;
+    }
+    
+    .modal-content {
+        padding: 0.625em;
+    }
+    
+    .close-modal {
+        font-size: 1em;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+        padding: 0.375em;
+        font-size: 0.75em;
+    }
+    
+    .rating-stars {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 90em) and (hover: none) {
+    .tab-btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .action-btn {
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 90em) {
+    .admin-thumbnail {
+        loading: lazy;
     }
 }

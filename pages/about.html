@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="adminPanel">Admin Panel | Travel</title>
+    <title>About Us - Explore and Travel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/admin-panel.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/buttons.css">
 </head>
 <body>
     <div class="container">
@@ -143,205 +147,104 @@
             </div>
         </div>
 
-        <main class="admin-panel">
-            <h1 data-i18n="adminPanel">Admin Panel</h1>
-            
-            <div class="admin-tabs">
-                <button class="tab-btn active" data-tab="destinations" data-i18n="destinations">Destinations</button>
-                <button class="tab-btn" data-tab="testimonials" data-i18n="testimonials">Testimonials</button>
-                <button class="tab-btn" data-tab="articles" data-i18n="articles">Articles</button>
-                <button class="tab-btn" data-tab="users" data-i18n="users">Users</button>
-            </div>
+<main>
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1 data-i18n="aboutCompany">О нашей компании</h1>
+            <p data-i18n="aboutCompanyText">Thousand Sunny - это ведущая туристическая компания, которая помогает путешественникам открывать для себя мир с 2010 года. Наша миссия - сделать путешествия доступными, безопасными и незабываемыми для каждого клиента.</p>
+        </div>
+        <div class="about-hero-image">
+            <img src="../img/about-hero.webp" data-i18n="ourTeam" alt="Наша команда">
+        </div>
+    </section>
 
-            <div class="tab-content active" id="destinations-tab">
-                <div class="admin-controls">
-                    <button class="btn" id="addDestinationBtn" data-i18n="addDestination">Add Destination</button>
+    <section class="about-values">
+        <h2 data-i18n="ourValues">Наши ценности</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <img src="../img/quality-icon.png" data-i18n="qualityService" alt="Качество">
                 </div>
-                
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="id">ID</th>
-                            <th data-i18n="image">Image</th>
-                            <th data-i18n="name">Name</th>
-                            <th data-i18n="location">Location</th>
-                            <th data-i18n="category">Category</th>
-                            <th data-i18n="actions">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="destinationsTable"></tbody>
-                </table>
+                <h3 data-i18n="qualityService">Качество обслуживания</h3>
+                <p data-i18n="qualityServiceText">Мы стремимся предоставлять высочайший уровень сервиса для всех наших клиентов.</p>
             </div>
-
-            <div class="tab-content" id="testimonials-tab">
-                <div class="admin-controls">
-                    <button class="btn" id="addTestimonialBtn" data-i18n="addTestimonial">Add Testimonial</button>
+            <div class="value-card">
+                <div class="value-icon">
+                    <img src="../img/sustainability-icon.png" data-i18n="sustainableTourism" alt="Устойчивость">
                 </div>
-                
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="id">ID</th>
-                            <th data-i18n="photo">Photo</th>
-                            <th data-i18n="author">Author</th>
-                            <th data-i18n="position">Position</th>
-                            <th data-i18n="rating">Rating</th>
-                            <th data-i18n="actions">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="testimonialsTable"></tbody>
-                </table>
+                <h3 data-i18n="sustainableTourism">Устойчивый туризм</h3>
+                <p data-i18n="sustainableTourismText">Мы поддерживаем ответственный туризм, который уважает местные сообщества и окружающую среду.</p>
             </div>
-
-            <div class="tab-content" id="articles-tab">
-                <div class="admin-controls">
-                    <button class="btn" id="addArticleBtn" data-i18n="addArticle">Add Article</button>
+            <div class="value-card">
+                <div class="value-icon">
+                    <img src="../img/innovation-icon.png" data-i18n="innovation" alt="Инновации">
                 </div>
-                
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="id">ID</th>
-                            <th data-i18n="image">Image</th>
-                            <th data-i18n="title">Title</th>
-                            <th data-i18n="category">Category</th>
-                            <th data-i18n="date">Date</th>
-                            <th data-i18n="actions">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="articlesTable"></tbody>
-                </table>
-            </div>
-
-            <div class="tab-content" id="users-tab">
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="id">ID</th>
-                            <th data-i18n="username">Username</th>
-                            <th data-i18n="email">Email</th>
-                            <th data-i18n="role">Role</th>
-                            <th data-i18n="actions">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="usersTable"></tbody>
-                </table>
-            </div>
-        </main>
-
-        <div class="modal" id="adminModal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2 id="modalTitle" data-i18n="addNewDestination">Add New Destination</h2>
-                
-                <form id="adminForm">
-                    <input type="hidden" id="editId">
-                    <input type="hidden" id="currentTab" value="destinations">
-
-                    <div class="form-group destination-fields">
-                        <div class="form-group">
-                            <label for="name" data-i18n="name">Name:</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="location" data-i18n="location">Location:</label>
-                            <input type="text" id="location" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="category" data-i18n="category">Category:</label>
-                            <select id="category" required>
-                                <option value="beach" data-i18n="beach">Beach</option>
-                                <option value="mountain" data-i18n="mountain">Mountain</option>
-                                <option value="city" data-i18n="city">City</option>
-                                <option value="island" data-i18n="island">Island</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="image" data-i18n="image">Image URL:</label>
-                            <input type="text" id="image" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="description" data-i18n="description">Description:</label>
-                            <textarea id="description" rows="4"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group testimonial-fields" style="display: none;">
-                        <div class="form-group">
-                            <label for="author" data-i18n="author">Author:</label>
-                            <input type="text" id="author" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="position" data-i18n="position">Position:</label>
-                            <input type="text" id="position" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="quote" data-i18n="quote">Quote:</label>
-                            <textarea id="quote" rows="3" required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="rating" data-i18n="rating">Rating (1-5):</label>
-                            <input type="number" id="rating" min="1" max="5" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="photo" data-i18n="photo">Photo URL:</label>
-                            <input type="text" id="photo">
-                        </div>
-                    </div>
-                    
-                    <!-- Поля для статей -->
-                    <div class="form-group article-fields" style="display: none;">
-                        <div class="form-group">
-                            <label for="articleTitle" data-i18n="title">Title:</label>
-                            <input type="text" id="articleTitle" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="articleExcerpt" data-i18n="excerpt">Excerpt:</label>
-                            <textarea id="articleExcerpt" rows="3" required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="articleContent" data-i18n="content">Content (HTML):</label>
-                            <textarea id="articleContent" rows="10" required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="articleCategory" data-i18n="category">Category:</label>
-                            <select id="articleCategory" required>
-                                <option value="wellness" data-i18n="wellness">Wellness</option>
-                                <option value="food" data-i18n="food">Food</option>
-                                <option value="adventure" data-i18n="adventure">Adventure</option>
-                                <option value="sports" data-i18n="sports">Sports</option>
-                                <option value="culture" data-i18n="culture">Culture</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="articleImage" data-i18n="image">Image URL:</label>
-                            <input type="text" id="articleImage" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="articleDate" data-i18n="date">Date:</label>
-                            <input type="date" id="articleDate" required>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn" data-i18n="save">Save</button>
-                </form>
+                <h3 data-i18n="innovation">Инновации</h3>
+                <p data-i18n="innovationText">Мы постоянно ищем новые способы улучшить опыт путешествий с помощью технологий.</p>
             </div>
         </div>
+    </section>
+
+    <section class="about-team">
+        <h2 data-i18n="ourTeam">Наша команда</h2>
+        <p data-i18n="teamDescription">Наша команда состоит из опытных путешественников и экспертов по туризму, которые обладают глубокими знаниями о различных направлениях по всему миру.</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="../img/team1.jpg" data-i18n="annaPetrova" alt="Анна Петрова">
+                </div>
+                <h3 data-i18n="annaPetrova">Анна Петрова</h3>
+                <p class="member-role" data-i18n="founderCEO">Основатель и CEO</p>
+                <p class="member-desc" data-i18n="annaDesc">Страстный путешественник с более чем 15-летним опытом в индустрии туризма.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="../img/team2.jpg" data-i18n="maximIvanov" alt="Максим Иванов">
+                </div>
+                <h3 data-i18n="maximIvanov">Максим Иванов</h3>
+                <p class="member-role" data-i18n="operationsDirector">Директор по операциям</p>
+                <p class="member-desc" data-i18n="maximDesc">Специализируется на организации сложных маршрутов и приключенческих туров.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="../img/team3.jpg" data-i18n="elenaSmirnova" alt="Елена Смирнова">
+                </div>
+                <h3 data-i18n="elenaSmirnova">Елена Смирнова</h3>
+                <p class="member-role" data-i18n="guideExpert">Гид и эксперт по направлениям</p>
+                <p class="member-desc" data-i18n="elenaDesc">Знает все лучшие места в Азии и Восточной Европе, которые стоит посетить.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-stats">
+        <h2 data-i18n="ourAchievements">Наши достижения</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-count="15000">0</div>
+                <div class="stat-label" data-i18n="satisfiedClients">Довольных клиентов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="85">0</div>
+                <div class="stat-label" data-i18n="destinations">Стран назначения</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="12">0</div>
+                <div class="stat-label" data-i18n="yearsExperience">Лет опыта</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-label" data-i18n="positiveReviews">% положительных отзывов</div>
+            </div>
+        </div>
+    </section>
+            <div class="contact-map">
+                <div id="map"></div>
+            </div>
+</main>
     </div>
-            <footer>
+
+                    <footer>
             <div class="footer-top">
                 <div class="footer-left">
                     <a href="home.html"><img src="../img/logo.svg" alt="Travel Logo" data-i18n="logoAlt"></a>
@@ -395,12 +298,14 @@
                 </div>
             </div>
         </footer>
-    <script src="../js/admin/admin-panel.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" ></script>
     <script src="../js/i18n/i18n.js"></script>
     <script src="../js/menu-user/auth-menu.js"></script>
     <script src="../js/menu-user/menu.js"></script>
     <script src="../js/menu-user/mobile-menu.js"></script>
     <script src="../js/menu-user/settings.js"></script>
+    <script src="../js/about/stats.js"></script>
     <script src="../js/burger-menu/burger-menu.js"></script>
+    <script src="../js/map/map.js"></script>
 </body>
 </html>

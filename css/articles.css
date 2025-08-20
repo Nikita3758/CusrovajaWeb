@@ -1,99 +1,99 @@
 .articles-page {
-    padding: 40px 0;
-    max-width: 1200px;
+    padding: 2.5em 0;
+    max-width: 75em;
     margin: 0 auto;
 }
 
 .page-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 2.5em;
 }
 
 .page-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.5em;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 0.625em;
 }
 
 .page-header p {
     color: #666;
-    font-size: 1.1rem;
+    font-size: 1.1em;
 }
 
 .articles-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.875em;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 1.25em;
 }
 
 .search-box {
     display: flex;
     align-items: center;
     flex-grow: 1;
-    max-width: 400px;
+    max-width: 25em;
 }
 
 .search-box input {
     width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    font-size: 1rem;
+    padding: 0.625em 0.9375em;
+    border: 0.0625em solid #ddd;
+    border-radius: 0.25em 0 0 0.25em;
+    font-size: 1em;
 }
 
 .search-box button {
-    padding: 10px 15px;
+    padding: 0.625em 0.9375em;
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 0.25em 0.25em 0;
     cursor: pointer;
 }
 
 .filters {
     display: flex;
-    gap: 15px;
+    gap: 0.9375em;
 }
 
 .filters select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 0.625em;
+    border: 0.0625em solid #ddd;
+    border-radius: 0.25em;
+    font-size: 1em;
     background-color: white;
 }
 
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(23.75em, 1fr));
+    gap: 1.875em;
+    margin-bottom: 2.5em;
 }
 
 .article-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 0.75em;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 0.25em 0.75em rgba(0,0,0,0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
-    height: 450px; /* Увеличиваем базовую высоту */
+    height: 28.125em;
     display: flex;
     flex-direction: column;
 }
 
 .article-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    height: 550px; /* Увеличиваем высоту при наведении */
+    transform: translateY(-0.5em);
+    box-shadow: 0 0.75em 1.875em rgba(0,0,0,0.2);
+    height: 34.375em;
 }
 
 .article-image {
-    height: 200px;
+    height: 12.5em;
     width: 100%;
     object-fit: cover;
     transition: height 0.4s ease;
@@ -101,11 +101,11 @@
 }
 
 .article-card:hover .article-image {
-    height: 180px; /* Небольшое уменьшение изображения */
+    height: 11.25em;
 }
 
 .article-info {
-    padding: 20px;
+    padding: 1.25em;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -116,24 +116,24 @@
     display: inline-block;
     background: var(--primary-color);
     color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    margin-bottom: 12px;
+    padding: 0.25em 0.75em;
+    border-radius: 1.25em;
+    font-size: 0.8em;
+    margin-bottom: 0.75em;
 }
 
 .article-title {
-    font-size: 1.3rem;
-    margin-bottom: 12px;
+    font-size: 1.3em;
+    margin-bottom: 0.75em;
     line-height: 1.4;
     color: #222;
 }
 
 .article-excerpt {
     color: #666;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375em;
     line-height: 1.5;
-    font-size: 0.95rem;
+    font-size: 0.95em;
 }
 
 .article-content-container {
@@ -145,16 +145,16 @@
 .article-content-preview {
     color: #444;
     line-height: 1.6;
-    font-size: 0.95rem;
-    max-height: 60px;
+    font-size: 0.95em;
+    max-height: 3.75em;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375em;
 }
 
 .article-content-full {
     color: #444;
     line-height: 1.6;
-    font-size: 0.95rem;
+    font-size: 0.95em;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
@@ -162,45 +162,44 @@
 }
 
 .article-card:hover .article-content-full {
-    max-height: 250px; /* Достаточно для полного контента */
+    max-height: 15.625em;
     opacity: 1;
     overflow-y: auto;
 }
 
 .article-content-full p {
-    margin-bottom: 12px;
+    margin-bottom: 0.75em;
 }
 
 .article-content-full h2,
 .article-content-full h3 {
-    margin: 15px 0 10px;
+    margin: 0.9375em 0 0.625em;
     color: #222;
-    font-size: 1.1rem;
+    font-size: 1.1em;
 }
 
 .article-content-full ul,
 .article-content-full ol {
-    margin: 10px 0;
-    padding-left: 20px;
+    margin: 0.625em 0;
+    padding-left: 1.25em;
 }
 
 .article-content-full li {
-    margin-bottom: 5px;
+    margin-bottom: 0.3125em;
 }
 
-/* Кастомный скроллбар */
 .article-content-full::-webkit-scrollbar {
-    width: 6px;
+    width: 0.375em;
 }
 
 .article-content-full::-webkit-scrollbar-track {
     background: #f8f9fa;
-    border-radius: 3px;
+    border-radius: 0.1875em;
 }
 
 .article-content-full::-webkit-scrollbar-thumb {
     background: #ced4da;
-    border-radius: 3px;
+    border-radius: 0.1875em;
 }
 
 .article-content-full::-webkit-scrollbar-thumb:hover {
@@ -212,17 +211,17 @@
     justify-content: space-between;
     align-items: center;
     color: #888;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     margin-top: auto;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
+    padding-top: 0.9375em;
+    border-top: 0.0625em solid #eee;
     flex-shrink: 0;
 }
 
 .read-more-hint {
     color: var(--primary-color);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     opacity: 1;
     transition: opacity 0.3s ease;
 }
@@ -231,11 +230,10 @@
     opacity: 0;
 }
 
-/* Скелетоны для загрузки */
 .article-skeleton {
     background: #eee;
-    border-radius: 8px;
-    height: 450px;
+    border-radius: 0.5em;
+    height: 28.125em;
     position: relative;
     overflow: hidden;
 }
@@ -256,19 +254,18 @@
     100% { transform: translateX(100%); }
 }
 
-/* Пагинация */
 .pagination {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 40px;
+    gap: 0.625em;
+    margin-top: 2.5em;
 }
 
 .pagination button {
-    padding: 10px 16px;
-    border: 1px solid #ddd;
+    padding: 0.625em 1em;
+    border: 0.0625em solid #ddd;
     background: white;
-    border-radius: 6px;
+    border-radius: 0.375em;
     cursor: pointer;
     transition: all 0.2s;
     font-weight: 500;
@@ -290,8 +287,206 @@
     cursor: not-allowed;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+@media (max-width: 90em) {
+    .articles-page {
+        padding: 2em 1em;
+        max-width: 100%;
+    }
+    
+    .page-header h1 {
+        font-size: 2.25em;
+    }
+    
+    .page-header p {
+        font-size: 1.05em;
+    }
+    
+    .articles-controls {
+        margin-bottom: 1.5em;
+        gap: 1em;
+    }
+    
+    .search-box {
+        max-width: 22em;
+    }
+    
+    .articles-grid {
+        gap: 1.5em;
+        margin-bottom: 2em;
+    }
+    
+    .article-card {
+        height: 26em;
+    }
+    
+    .article-card:hover {
+        height: 32em;
+    }
+    
+    .article-image {
+        height: 11.5em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 10.5em;
+    }
+}
+
+@media (max-width: 80em) {
+    .page-header h1 {
+        font-size: 2em;
+    }
+    
+    .articles-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .filters {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .filters select {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .articles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+        gap: 1.25em;
+    }
+    
+    .article-card {
+        height: 24em;
+    }
+    
+    .article-card:hover {
+        height: 30em;
+    }
+    
+    .article-image {
+        height: 10.5em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 9.5em;
+    }
+    
+    .article-info {
+        padding: 1em;
+    }
+    
+    .article-title {
+        font-size: 1.2em;
+    }
+    
+    .article-content-full {
+        max-height: 12em;
+    }
+}
+
+@media (max-width: 70em) {
+    .articles-page {
+        padding: 1.75em 0.875em;
+    }
+    
+    .page-header {
+        margin-bottom: 2em;
+    }
+    
+    .page-header h1 {
+        font-size: 1.875em;
+    }
+    
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .article-card {
+        height: 22em;
+    }
+    
+    .article-card:hover {
+        height: 28em;
+    }
+    
+    .article-image {
+        height: 9.5em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 8.5em;
+    }
+    
+    .article-content-full {
+        font-size: 0.9em;
+        max-height: 10em;
+    }
+    
+    .pagination {
+        margin-top: 2em;
+    }
+}
+
+@media (max-width: 64em) {
+    .page-header h1 {
+        font-size: 1.75em;
+    }
+    
+    .articles-controls {
+        gap: 0.875em;
+    }
+    
+    .search-box input,
+    .search-box button,
+    .filters select {
+        padding: 0.5625em 0.875em;
+        font-size: 0.9375em;
+    }
+    
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+    
+    .article-card {
+        height: 20em;
+        max-width: 28em;
+        margin: 0 auto;
+    }
+    
+    .article-card:hover {
+        height: 26em;
+    }
+    
+    .article-image {
+        height: 8.5em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 7.5em;
+    }
+    
+    .article-title {
+        font-size: 1.15em;
+    }
+    
+    .article-excerpt,
+    .article-content-preview {
+        font-size: 0.9em;
+    }
+    
+    .article-meta {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 48em) {
     .articles-controls {
         flex-direction: column;
         align-items: stretch;
@@ -304,53 +499,226 @@
     .filters {
         width: 100%;
         flex-direction: column;
-        gap: 10px;
+        gap: 0.625em;
     }
     
     .articles-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 1.25em;
     }
     
     .article-card {
-        height: 400px;
+        height: 25em;
     }
     
     .article-card:hover {
-        height: 500px;
+        height: 31.25em;
     }
     
     .article-image {
-        height: 180px;
+        height: 11.25em;
     }
     
     .article-card:hover .article-image {
-        height: 160px;
+        height: 10em;
+    }
+    
+    .article-card {
+        height: 22em;
+    }
+    
+    .article-card:hover {
+        height: 28em;
+    }
+    
+    .article-image {
+        height: 9em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 8em;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 37.5em) {
+    .articles-page {
+        padding: 1.5em 0.75em;
+    }
+    
+    .page-header {
+        margin-bottom: 1.5em;
+    }
+    
+    .page-header h1 {
+        font-size: 1.5em;
+    }
+    
+    .page-header p {
+        font-size: 1em;
+    }
+    
+    .articles-controls {
+        margin-bottom: 1.25em;
+    }
+    
     .article-card {
-        height: 380px;
+        height: 20em;
     }
     
     .article-card:hover {
-        height: 480px;
+        height: 26em;
     }
     
     .article-image {
-        height: 160px;
+        height: 8em;
     }
     
     .article-card:hover .article-image {
-        height: 140px;
+        height: 7em;
     }
     
     .article-info {
-        padding: 15px;
+        padding: 0.875em;
     }
     
     .article-title {
-        font-size: 1.2rem;
+        font-size: 1.1em;
+    }
+    
+    .article-content-full {
+        max-height: 8em;
+        font-size: 0.85em;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+        gap: 0.5em;
+        margin-top: 1.5em;
+    }
+    
+    .pagination button {
+        padding: 0.5em 0.875em;
+        font-size: 0.9em;
+        min-width: 2.75em;
+        height: 2.75em;
+    }
+}
+
+@media (max-width: 30em) {
+    .article-card {
+        height: 18em;
+    }
+    
+    .article-card:hover {
+        height: 24em;
+    }
+    
+    .article-image {
+        height: 7em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 6em;
+    }
+    
+    .article-title {
+        font-size: 1em;
+    }
+    
+    .article-excerpt,
+    .article-content-preview {
+        font-size: 0.85em;
+    }
+    
+    .article-content-full {
+        max-height: 6em;
+    }
+    
+    .article-meta {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 23.4375em) {
+    .articles-page {
+        padding: 1.25em 0.5em;
+    }
+    
+    .page-header h1 {
+        font-size: 1.375em;
+    }
+    
+    .page-header p {
+        font-size: 0.95em;
+    }
+    
+    .search-box input,
+    .search-box button,
+    .filters select {
+        padding: 0.5em 0.75em;
+        font-size: 0.9em;
+    }
+    
+    .article-card {
+        height: 16em;
+    }
+    
+    .article-card:hover {
+        height: 22em;
+    }
+    
+    .article-image {
+        height: 6em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 5em;
+    }
+    
+    .article-info {
+        padding: 0.75em;
+    }
+    
+    .article-category {
+        font-size: 0.75em;
+    }
+    
+    .article-content-full {
+        max-height: 5em;
+        font-size: 0.8em;
+    }
+    
+    .pagination button {
+        min-width: 2.5em;
+        height: 2.5em;
+        font-size: 0.85em;
+        padding: 0.375em 0.75em;
+    }
+}
+
+@media (max-width: 90em) and (hover: none) {
+    .article-card:hover {
+        transform: none;
+        box-shadow: 0 0.25em 0.75em rgba(0,0,0,0.1);
+        height: 28.125em;
+    }
+    
+    .article-card:hover .article-image {
+        height: 12.5em;
+    }
+    
+    .article-content-full {
+        max-height: 0;
+        opacity: 0;
+    }
+    
+    .read-more-hint {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 90em) {
+    .article-image {
+        loading: lazy;
     }
 }
