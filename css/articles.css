@@ -33,24 +33,29 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
-    max-width: 25em;
+    min-width: 15.625em;
 }
 
 .search-box input {
-    width: 100%;
     padding: 0.625em 0.9375em;
     border: 0.0625em solid #ddd;
     border-radius: 0.25em 0 0 0.25em;
+    width: 100%;
     font-size: 1em;
 }
 
 .search-box button {
     padding: 0.625em 0.9375em;
-    background-color: var(--primary-color);
+    background: #FF7D50;
     color: white;
     border: none;
     border-radius: 0 0.25em 0.25em 0;
     cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-box button:hover {
+    background: #e56a3d;
 }
 
 .filters {

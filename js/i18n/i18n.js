@@ -636,7 +636,7 @@ function updateModalTitle(lang) {
 }
         
 document.addEventListener('DOMContentLoaded', function() {
-    const savedLang = localStorage.getItem('language') || 'ru';
+    const savedLang = localStorage.getItem('language') || 'en';
     updateTranslations(savedLang);
 
     const languageSelect = document.getElementById('language-select');

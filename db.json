@@ -1,18 +1,6 @@
 {
   "users": [
     {
-      "id": "6cea",
-      "phone": "375296081350",
-      "email": "vladneckt@gmail.com",
-      "birthDate": "2000-06-15",
-      "password": "nMaZ%o4&rJA7",
-      "fullName": "ULADZISLAU SHABOLDA",
-      "username": "uladzislau_s",
-      "agreement": true,
-      "role": "admin",
-      "createdAt": "2025-08-15T08:01:11.280Z"
-    },
-    {
       "id": "e109",
       "phone": "375296081320",
       "email": "grrgrrg@gmail.com",

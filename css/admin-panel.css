@@ -436,6 +436,10 @@
         gap: 0.375em;
         border-bottom: none;
     }
+
+    .tab-content{
+        width: 100%
+    }
     
     .tab-btn {
         border-left: 0.1875em solid transparent;
