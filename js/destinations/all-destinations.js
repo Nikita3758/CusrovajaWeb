@@ -12,12 +12,89 @@ document.addEventListener('DOMContentLoaded', function() {
     let allDestinations = [];
     let filteredDestinations = [];
 
+    const translations = {
+        en: {
+            name: "Name",
+            phone: "Phone",
+            email: "Email",
+            travelDate: "Travel Date",
+            travelersCount: "Travelers Count",
+            message: "Message",
+            messagePlaceholder: "Your wishes...",
+            sendRequest: "Send Request",
+            bookingSuccess: "Thank you for your request! We will contact you shortly.",
+            noDestinationsFound: "No destinations found",
+            loginRequired: "Please log in to book a destination",
+            validation: {
+                requiredField: "This field is required",
+                nameMinLength: "Name must be at least 2 characters",
+                nameInvalid: "Name can only contain letters, spaces and hyphens",
+                phoneInvalid: "Please enter a valid phone number",
+                emailInvalid: "Please enter a valid email address",
+                dateFuture: "Please select a future date",
+                travelersCount: "Number of travelers must be between 1 and 50",
+                messageTooLong: "Message must not exceed 500 characters"
+            }
+        },
+        ru: {
+            name: "Имя",
+            phone: "Телефон",
+            email: "Email",
+            travelDate: "Дата поездки",
+            travelersCount: "Количество путешественников",
+            message: "Сообщение",
+            messagePlaceholder: "Ваши пожелания...",
+            sendRequest: "Отправить заявку",
+            bookingSuccess: "Спасибо за заявку! Мы свяжемся с вами в ближайшее время.",
+            noDestinationsFound: "Направления не найдены",
+            loginRequired: "Пожалуйста, войдите в систему, чтобы забронировать направление",
+            validation: {
+                requiredField: "Это поле обязательно для заполнения",
+                nameMinLength: "Имя должно содержать минимум 2 символа",
+                nameInvalid: "Имя может содержать только буквы, пробелы и дефисы",
+                phoneInvalid: "Пожалуйста, введите корректный номер телефона",
+                emailInvalid: "Пожалуйста, введите корректный email адрес",
+                dateFuture: "Пожалуйста, выберите дату в будущем",
+                travelersCount: "Количество путешественников должно быть от 1 до 50",
+                messageTooLong: "Сообщение не должно превышать 500 символов"
+            }
+        }
+    };
+
+    function t(key) {
+        const currentLang = localStorage.getItem('language') || 'en';
+        const keys = key.split('.');
+        let value = translations[currentLang];
+        
+        for (const k of keys) {
+            value = value?.[k];
+        }
+        
+        return value || translations.en[key] || key;
+    }
+
+    function isUserLoggedIn() {
+        return localStorage.getItem('currentUser') !== null;
+    }
+
+    function getCurrentUser() {
+        const user = localStorage.getItem('currentUser');
+        return user ? JSON.parse(user) : null;
+    }
+
+    let bookingModalCreated = false;
+
     fetch('http://localhost:3000/destinations')
         .then(response => response.json())
         .then(data => {
             allDestinations = data;
             filteredDestinations = [...allDestinations];
             updateDisplay();
+            
+            if (!bookingModalCreated) {
+                createBookingModal();
+                bookingModalCreated = true;
+            }
         })
         .catch(error => {
             console.error('Error loading destinations:', error);
@@ -79,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gridContainer.innerHTML = '';
         
         if (currentItems.length === 0) {
-            gridContainer.innerHTML = '<p class="no-results">No destinations found matching your criteria.</p>';
+            gridContainer.innerHTML = '<p class="no-results">' + t('noDestinationsFound') + '</p>';
             paginationContainer.innerHTML = '';
             return;
         }
@@ -102,11 +179,371 @@ document.addEventListener('DOMContentLoaded', function() {
                     ${destination.description ? `<p class="destination-description">${destination.description}</p>` : ''}
                 </div>
             `;
+
+            card.addEventListener('click', () => {
+                if (isUserLoggedIn()) {
+                    openBookingModal(destination);
+                } else {
+                    showNotification(t('loginRequired'), 'error');
+                }
+            });
+            
             gridContainer.appendChild(card);
         });
 
         updatePagination();
     }
+
+    function createBookingModal() {
+        const modalHTML = `
+            <div class="booking-modal">
+                <div class="booking-modal-content">
+                    <span class="booking-close">&times;</span>
+                    <div class="booking-destination-header">
+                        <img class="booking-destination-image" src="" alt="">
+                        <div class="booking-header-info">
+                            <h2 class="booking-destination-name"></h2>
+                            <div class="booking-destination-location"></div>
+                            <div class="booking-destination-category"></div>
+                        </div>
+                    </div>
+                    <form class="booking-form">
+                        <input type="hidden" class="booking-selected-destination">
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">${t('name')} *</label>
+                            <input type="text" class="booking-form-input" name="name" required>
+                            <div class="booking-error-message" data-field="name"></div>
+                        </div>
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">${t('phone')} *</label>
+                            <input type="tel" class="booking-form-input" name="phone" required>
+                            <div class="booking-error-message" data-field="phone"></div>
+                        </div>
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">${t('email')} *</label>
+                            <input type="email" class="booking-form-input" name="email" required>
+                            <div class="booking-error-message" data-field="email"></div>
+                        </div>
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">${t('travelDate')}</label>
+                            <input type="date" class="booking-form-input" name="travelDate">
+                            <div class="booking-error-message" data-field="travelDate"></div>
+                        </div>
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">${t('travelersCount')}</label>
+                            <input type="number" class="booking-form-input" name="travelersCount" min="1" value="1">
+                            <div class="booking-error-message" data-field="travelersCount"></div>
+                        </div>
+                        <div class="booking-form-group">
+                            <label class="booking-form-label">${t('message')}</label>
+                            <textarea class="booking-form-textarea" name="message" placeholder="${t('messagePlaceholder')}"></textarea>
+                            <div class="booking-error-message" data-field="message"></div>
+                        </div>
+                        <button type="submit" class="booking-submit-btn">${t('sendRequest')}</button>
+                    </form>
+                </div>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        const modal = document.querySelector('.booking-modal');
+        const closeBtn = modal.querySelector('.booking-close');
+        const form = modal.querySelector('.booking-form');
+
+        closeBtn.addEventListener('click', closeBookingModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
+
+        form.addEventListener('submit', handleBookingSubmit);
+        
+        const inputs = form.querySelectorAll('.booking-form-input, .booking-form-textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('input', () => clearFieldError(input));
+        });
+    }
+
+    function validateField(field) {
+        const fieldName = field.name;
+        const value = field.value.trim();
+        const errorElement = document.querySelector(`.booking-error-message[data-field="${fieldName}"]`);
+        
+        clearFieldError(field);
+
+        switch(fieldName) {
+            case 'name':
+                if (!value) {
+                    showFieldError(field, t('validation.requiredField'));
+                } else if (value.length < 2) {
+                    showFieldError(field, t('validation.nameMinLength'));
+                } else if (!/^[a-zA-Zа-яА-ЯёЁ\s\-]+$/.test(value)) {
+                    showFieldError(field, t('validation.nameInvalid'));
+                }
+                break;
+                
+            case 'phone':
+                if (!value) {
+                    showFieldError(field, t('validation.requiredField'));
+                } else if (!/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)) {
+                    showFieldError(field, t('validation.phoneInvalid'));
+                }
+                break;
+                
+            case 'email':
+                if (!value) {
+                    showFieldError(field, t('validation.requiredField'));
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                    showFieldError(field, t('validation.emailInvalid'));
+                }
+                break;
+                
+            case 'travelDate':
+                if (value) {
+                    const selectedDate = new Date(value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (selectedDate < today) {
+                        showFieldError(field, t('validation.dateFuture'));
+                    }
+                }
+                break;
+                
+            case 'travelersCount':
+                if (value && (value < 1 || value > 50)) {
+                    showFieldError(field, t('validation.travelersCount'));
+                }
+                break;
+                
+            case 'message':
+                if (value && value.length > 500) {
+                    showFieldError(field, t('validation.messageTooLong'));
+                }
+                break;
+        }
+    }
+
+    function showFieldError(field, message) {
+        field.classList.add('booking-input-error');
+        const errorElement = document.querySelector(`.booking-error-message[data-field="${field.name}"]`);
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+    }
+
+    function clearFieldError(field) {
+        field.classList.remove('booking-input-error');
+        const errorElement = document.querySelector(`.booking-error-message[data-field="${field.name}"]`);
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        }
+    }
+
+    function validateForm(formData) {
+        let isValid = true;
+        const errors = {};
+
+        const name = formData.get('name').trim();
+        if (!name) {
+            errors.name = t('validation.requiredField');
+            isValid = false;
+        } else if (name.length < 2) {
+            errors.name = t('validation.nameMinLength');
+            isValid = false;
+        } else if (!/^[a-zA-Zа-яА-ЯёЁ\s\-]+$/.test(name)) {
+            errors.name = t('validation.nameInvalid');
+            isValid = false;
+        }
+
+        const phone = formData.get('phone').trim();
+        if (!phone) {
+            errors.phone = t('validation.requiredField');
+            isValid = false;
+        } else if (!/^[\+]?[0-9\s\-\(\)]{10,}$/.test(phone)) {
+            errors.phone = t('validation.phoneInvalid');
+            isValid = false;
+        }
+
+        const email = formData.get('email').trim();
+        if (!email) {
+            errors.email = t('validation.requiredField');
+            isValid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errors.email = t('validation.emailInvalid');
+            isValid = false;
+        }
+
+        const travelDate = formData.get('travelDate');
+        if (travelDate) {
+            const selectedDate = new Date(travelDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                errors.travelDate = t('validation.dateFuture');
+                isValid = false;
+            }
+        }
+
+        const travelersCount = formData.get('travelersCount');
+        if (travelersCount && (travelersCount < 1 || travelersCount > 50)) {
+            errors.travelersCount = t('validation.travelersCount');
+            isValid = false;
+        }
+
+        const message = formData.get('message').trim();
+        if (message && message.length > 500) {
+            errors.message = t('validation.messageTooLong');
+            isValid = false;
+        }
+
+        return { isValid, errors };
+    }
+
+    function openBookingModal(destination) {
+        if (!isUserLoggedIn()) {
+            showNotification(t('loginRequired'), 'error');
+            return;
+        }
+
+        const modal = document.querySelector('.booking-modal');
+        if (!modal) {
+            createBookingModal();
+        }
+        
+        const destinationImage = modal.querySelector('.booking-destination-image');
+        const destinationName = modal.querySelector('.booking-destination-name');
+        const destinationLocation = modal.querySelector('.booking-destination-location');
+        const destinationCategory = modal.querySelector('.booking-destination-category');
+        const destinationInput = modal.querySelector('.booking-selected-destination');
+        
+        destinationInput.value = destination.name;
+        destinationImage.src = destination.image;
+        destinationImage.alt = destination.name;
+        destinationName.textContent = destination.name;
+        destinationLocation.textContent = destination.location;
+        
+        if (destination.category) {
+            destinationCategory.textContent = destination.category;
+            destinationCategory.style.display = 'inline-block';
+        } else {
+            destinationCategory.style.display = 'none';
+        }
+
+        const currentUser = getCurrentUser();
+        if (currentUser) {
+            const nameInput = modal.querySelector('input[name="name"]');
+            const emailInput = modal.querySelector('input[name="email"]');
+            const phoneInput = modal.querySelector('input[name="phone"]');
+            
+            if (nameInput && currentUser.name) nameInput.value = currentUser.name;
+            if (emailInput && currentUser.email) emailInput.value = currentUser.email;
+            if (phoneInput && currentUser.phone) phoneInput.value = currentUser.phone;
+        }
+        
+        modal.style.display = 'block';
+    }
+
+    function closeBookingModal() {
+        const modal = document.querySelector('.booking-modal');
+        if (modal) {
+            modal.style.display = 'none';
+            
+            const errorMessages = modal.querySelectorAll('.booking-error-message');
+            errorMessages.forEach(error => {
+                error.textContent = '';
+                error.style.display = 'none';
+            });
+            
+            const inputs = modal.querySelectorAll('.booking-form-input, .booking-form-textarea');
+            inputs.forEach(input => {
+                input.classList.remove('booking-input-error');
+            });
+            
+            document.querySelector('.booking-form').reset();
+        }
+    }
+
+    function handleBookingSubmit(e) {
+        e.preventDefault();
+
+        if (!isUserLoggedIn()) {
+            showNotification(t('loginRequired'), 'error');
+            closeBookingModal();
+            return;
+        }
+        
+        const formData = new FormData(e.target);
+        const validation = validateForm(formData);
+        
+        if (!validation.isValid) {
+            Object.keys(validation.errors).forEach(fieldName => {
+                const field = e.target.querySelector(`[name="${fieldName}"]`);
+                if (field) {
+                    showFieldError(field, validation.errors[fieldName]);
+                }
+            });
+            return;
+        }
+
+        const bookingData = {
+            destination: formData.get('destination'),
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            email: formData.get('email'),
+            travelDate: formData.get('travelDate'),
+            travelersCount: formData.get('travelersCount'),
+            message: formData.get('message'),
+            userId: getCurrentUser()?.id,
+            submittedAt: new Date().toISOString()
+        };
+
+        console.log('Booking data:', bookingData);
+
+        showNotification(t('bookingSuccess'), 'success');
+
+        closeBookingModal();
+
+        e.target.reset();
+    }
+
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 10000;
+            background-color: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }, 3000);
+    }
+
     function updatePagination() {
         paginationContainer.innerHTML = '';
         

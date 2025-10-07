@@ -78,6 +78,7 @@
     overflow: hidden;
     box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .destination-card:hover {
@@ -496,8 +497,304 @@
     }
 }
 
-@media (max-width: 90em) {
-    .destination-image {
-        loading: lazy;
+.booking-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.booking-modal-content {
+    background: white;
+    margin: 50px auto;
+    padding: 0;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.booking-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.booking-close:hover {
+    color: #000;
+    background: white;
+    transform: scale(1.1);
+}
+
+.booking-destination-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.booking-header-info {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+}
+
+.booking-header-info h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.3em;
+}
+
+.booking-destination-location {
+    color: #666;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.booking-destination-category {
+    background: #FF7D50;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.booking-form {
+    padding: 20px;
+}
+
+.booking-form-group {
+    margin-bottom: 15px;
+}
+
+.booking-form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.booking-form-input,
+.booking-form-textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.booking-form-input:focus,
+.booking-form-textarea:focus {
+    outline: none;
+    border-color: #FF7D50;
+    box-shadow: 0 0 0 2px rgba(255, 125, 80, 0.1);
+}
+
+.booking-form-textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.booking-submit-btn {
+    background: #FF7D50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.booking-submit-btn:hover {
+    background: #e56a3d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 125, 80, 0.3);
+}
+
+.booking-submit-btn:active {
+    transform: translateY(0);
+}
+
+.booking-input-error {
+    border-color: #ff4444 !important;
+    background-color: #fff8f8;
+}
+
+.booking-error-message {
+    color: #ff4444;
+    font-size: 0.8em;
+    margin-top: 4px;
+    display: none;
+}
+
+.booking-modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.booking-modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.booking-modal-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.booking-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.booking-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    z-index: 1001;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
     }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-modal-content {
+        margin: 20px auto;
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .booking-destination-image {
+        height: 120px;
+    }
+    
+    .booking-form {
+        padding: 15px;
+    }
+    
+    .booking-header-info {
+        padding: 12px 15px;
+    }
+    
+    .booking-close {
+        top: 8px;
+        right: 12px;
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-modal-content {
+        margin: 10px auto;
+        border-radius: 6px;
+    }
+    
+    .booking-destination-image {
+        height: 100px;
+    }
+    
+    .booking-header-info h2 {
+        font-size: 1.1em;
+    }
+    
+    .booking-header-info {
+        padding: 10px 12px;
+    }
+    
+    .booking-form {
+        padding: 12px;
+    }
+    
+    .booking-form-input,
+    .booking-form-textarea {
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+    
+    .booking-submit-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .booking-close {
+        top: 6px;
+        right: 10px;
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .booking-modal-content {
+        margin: 5px auto;
+        width: 98%;
+    }
+    
+    .booking-destination-image {
+        height: 80px;
+    }
+    
+    .booking-form {
+        padding: 10px;
+    }
+    
+    .booking-header-info {
+        padding: 8px 10px;
+    }
+    
+    .booking-form-group {
+        margin-bottom: 12px;
+    }
+}
+
+body.modal-open {
+    overflow: hidden;
 }
